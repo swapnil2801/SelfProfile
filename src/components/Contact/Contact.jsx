@@ -56,22 +56,17 @@ export default function Contact() {
     }
     setSending(true)
     try {
-      // ── HOW TO RECEIVE EMAILS ────────────────────────────────────────────
-      // 1. Sign up free at https://formspree.io
-      // 2. Create a new form → copy your Form ID (e.g. "xpzvwkgb")
-      // 3. Replace YOUR_FORM_ID below with that ID
-      // 4. Formspree will forward every submission to your email address
-      // ─────────────────────────────────────────────────────────────────────
-      const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: form.name, email: form.email, subject: form.subject, message: form.message }),
       })
-      if (res.ok) {
+      const data = await res.json()
+      if (res.ok && data.success) {
         setSent(true)
         setForm({ name: '', email: '', subject: '', message: '' })
       } else {
-        setError('Something went wrong. Please email me directly.')
+        setError(data.error || 'Something went wrong. Please email me directly.')
       }
     } catch {
       setError('Network error. Please email me directly.')
