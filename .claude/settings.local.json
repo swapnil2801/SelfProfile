@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run:*)",
+      "Bash(node -e \"const si = require\\('d:/POC\\\\\\\\'s/ProfileWebsite/node_modules/react-icons/si/index.js'\\); const keys = Object.keys\\(si\\).filter\\(k => k.toLowerCase\\(\\).includes\\('azure'\\) || k.toLowerCase\\(\\).includes\\('google'\\) || k.toLowerCase\\(\\).includes\\('kubernetes'\\) || k.toLowerCase\\(\\).includes\\('postman'\\) || k.toLowerCase\\(\\).includes\\('visual'\\) || k.toLowerCase\\(\\).includes\\('jira'\\)\\); console.log\\(keys.slice\\(0,30\\)\\)\")",
+      "Bash(node -e \"const si = require\\('d:/POC\\\\\\\\'s/ProfileWebsite/node_modules/react-icons/si/index.js'\\); const keys = Object.keys\\(si\\).filter\\(k => k.toLowerCase\\(\\).includes\\('azure'\\) || k.toLowerCase\\(\\).includes\\('microsoft'\\) || k.toLowerCase\\(\\).includes\\('visualstudio'\\) || k.toLowerCase\\(\\).includes\\('googlecloud'\\)\\); console.log\\(keys\\)\")",
+      "Bash(node -e \"const si = require\\('d:/POC\\\\\\\\'s/ProfileWebsite/node_modules/react-icons/si/index.js'\\); const keys = Object.keys\\(si\\).filter\\(k => k.toLowerCase\\(\\).includes\\('azure'\\) || k.toLowerCase\\(\\).includes\\('devops'\\) || k.toLowerCase\\(\\).includes\\('microsoftazure'\\)\\); console.log\\(keys\\)\")",
+      "Bash(node -e \"const fa = require\\('d:/POC\\\\\\\\'s/ProfileWebsite/node_modules/react-icons/fa/index.js'\\); const keys = Object.keys\\(fa\\).filter\\(k => k.toLowerCase\\(\\).includes\\('microsoft'\\) || k.toLowerCase\\(\\).includes\\('windows'\\)\\); console.log\\(keys\\)\")",
+      "Bash(node -e \"const si = require\\('d:/POC\\\\\\\\'s/ProfileWebsite/node_modules/react-icons/si/index.js'\\); const keys = Object.keys\\(si\\).filter\\(k => k.toLowerCase\\(\\).includes\\('visual'\\) || k.toLowerCase\\(\\).includes\\('vscode'\\)\\); console.log\\(keys\\)\")",
+      "Bash(node -e \"const si = require\\('d:/POC\\\\\\\\'s/ProfileWebsite/node_modules/react-icons/si/index.js'\\); const keys = Object.keys\\(si\\).filter\\(k => k.toLowerCase\\(\\).includes\\('grafana'\\) || k.toLowerCase\\(\\).includes\\('openai'\\) || k.toLowerCase\\(\\).includes\\('python'\\) || k.toLowerCase\\(\\).includes\\('litellm'\\)\\); console.log\\(keys\\)\")",
+      "Bash(node -e \"const fa = require\\('d:/POC\\\\\\\\'s/ProfileWebsite/node_modules/react-icons/fa/index.js'\\); const keys = Object.keys\\(fa\\).filter\\(k => k.toLowerCase\\(\\).includes\\('paper'\\) || k.toLowerCase\\(\\).includes\\('robot'\\) || k.toLowerCase\\(\\).includes\\('brain'\\) || k.toLowerCase\\(\\).includes\\('bolt'\\)\\); console.log\\(keys\\)\")",
+      "Bash(node --max-old-space-size=512 node_modules/.bin/vite build)",
+      "Bash(NODE_OPTIONS=\"--max-old-space-size=512\" npm run build)"
+    ]
+  }
+}
