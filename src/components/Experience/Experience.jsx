@@ -10,75 +10,29 @@ function ExperienceCard({ data, index }) {
 
   return (
     <div ref={ref} className="relative flex gap-6 md:gap-10">
-<<<<<<< HEAD
       {/* Timeline dot + line - removed colored elements */}
-=======
-      {/* Timeline dot + line */}
-      <div className="hidden md:flex flex-col items-center flex-shrink-0">
-        <motion.div
-          initial={{ scale: 0, opacity: 0 }}
-          animate={inView ? { scale: 1, opacity: 1 } : {}}
-          transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
-          className="relative w-12 h-12 rounded-full flex items-center justify-center z-10 flex-shrink-0"
-          style={{
-            background: 'linear-gradient(135deg, rgba(0,212,255,0.2), rgba(184,41,255,0.2))',
-            border: '2px solid rgba(0,212,255,0.5)',
-            boxShadow: '0 0 20px rgba(0,212,255,0.3)',
-          }}
-        >
-          <FaBriefcase size={16} style={{ color: '#00d4ff' }} />
-        </motion.div>
-        <div
-          className="w-px flex-1 mt-2"
-          style={{ background: 'linear-gradient(180deg, rgba(0,212,255,0.4), transparent)' }}
-        />
-      </div>
->>>>>>> f6aa14687c19e8a4686e9db9f2057df4c2f073d0
 
       {/* Card */}
       <motion.div
         initial={{ opacity: 0, x: 40 }}
         animate={inView ? { opacity: 1, x: 0 } : {}}
         transition={{ delay: 0.1, duration: 0.7, ease: 'easeOut' }}
-<<<<<<< HEAD
         className="flex-1 p-6 md:p-8 mb-8 rounded-lg border border-gray-700 transition-all duration-300 group-hover:border-gray-600"
-=======
-        className="flex-1 glass-card p-6 md:p-8 mb-8 group hover:border-cyan-500/30 transition-all duration-300"
-        style={{
-          boxShadow: 'none',
-        }}
-        whileHover={{
-          boxShadow: '0 16px 48px rgba(0,212,255,0.1)',
-          y: -4,
-        }}
->>>>>>> f6aa14687c19e8a4686e9db9f2057df4c2f073d0
       >
         {/* Header */}
         <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
           <div>
             {/* Role */}
             <div className="flex items-center gap-2 mb-1">
-<<<<<<< HEAD
               <h3 className="text-xl md:text-2xl font-bold text-gray-200">{data.role}</h3>
               <span
                 className="text-xs px-2 py-0.5 rounded-full font-mono"
                 style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: '#aaa' }}
-=======
-              <h3 className="text-xl md:text-2xl font-bold text-white">{data.role}</h3>
-              <span
-                className="text-xs px-2 py-0.5 rounded-full font-mono"
-                style={{
-                  background: 'rgba(0,255,136,0.1)',
-                  border: '1px solid rgba(0,255,136,0.25)',
-                  color: '#00ff88',
-                }}
->>>>>>> f6aa14687c19e8a4686e9db9f2057df4c2f073d0
               >
                 {data.type}
               </span>
             </div>
             {/* Company */}
-<<<<<<< HEAD
             <p className="text-lg font-semibold text-gray-100">{data.company}</p>
           </div>
 
@@ -86,58 +40,22 @@ function ExperienceCard({ data, index }) {
           <div className="px-4 py-2 rounded-xl text-right flex-shrink-0" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
             <p className="text-sm font-medium text-gray-400 font-mono">{data.period}</p>
             <p className="text-xs text-gray-500">{data.duration}</p>
-=======
-            <p
-              className="text-lg font-semibold gradient-text-blue-purple"
-            >
-              {data.company}
-            </p>
-          </div>
-
-          {/* Period badge */}
-          <div
-            className="px-4 py-2 rounded-xl text-right flex-shrink-0"
-            style={{
-              background: 'rgba(0,212,255,0.06)',
-              border: '1px solid rgba(0,212,255,0.15)',
-            }}
-          >
-            <p className="text-sm font-semibold text-cyan-400 font-mono">{data.period}</p>
-            <p className="text-xs text-slate-500">{data.duration}</p>
->>>>>>> f6aa14687c19e8a4686e9db9f2057df4c2f073d0
           </div>
         </div>
 
         {/* Meta info */}
-<<<<<<< HEAD
         <div className="flex flex-wrap gap-4 mb-6 text-xs text-gray-500">
           <span className="flex items-center gap-1.5">
             <FaMapMarkerAlt size={10} /> {data.location}
           </span>
           <span className="flex items-center gap-1.5">
             <FaClock size={10} /> {data.duration}
-=======
-        <div className="flex flex-wrap gap-4 mb-6 text-xs text-slate-500">
-          <span className="flex items-center gap-1.5">
-            <FaMapMarkerAlt size={10} />
-            {data.location}
-          </span>
-          <span className="flex items-center gap-1.5">
-            <FaClock size={10} />
-            {data.duration}
->>>>>>> f6aa14687c19e8a4686e9db9f2057df4c2f073d0
           </span>
         </div>
 
         {/* Responsibilities */}
         <div className="mb-6">
-<<<<<<< HEAD
           <h4 className="text-xs font-mono tracking-widest text-gray-500 uppercase mb-4">Key Responsibilities</h4>
-=======
-          <h4 className="text-xs font-mono tracking-widest text-slate-500 uppercase mb-4">
-            Key Responsibilities
-          </h4>
->>>>>>> f6aa14687c19e8a4686e9db9f2057df4c2f073d0
           <ul className="space-y-3">
             {data.responsibilities.map((item, i) => (
               <motion.li
@@ -145,19 +63,9 @@ function ExperienceCard({ data, index }) {
                 initial={{ opacity: 0, x: -10 }}
                 animate={inView ? { opacity: 1, x: 0 } : {}}
                 transition={{ delay: 0.3 + i * 0.07 }}
-<<<<<<< HEAD
                 className="flex items-start gap-3 text-sm text-gray-400 leading-relaxed"
               >
                 <FaCheckCircle size={14} className="flex-shrink-0 mt-0.5" style={{ color: '#6c757d' }} />
-=======
-                className="flex items-start gap-3 text-sm text-slate-400 leading-relaxed"
-              >
-                <FaCheckCircle
-                  size={14}
-                  className="flex-shrink-0 mt-0.5"
-                  style={{ color: '#00d4ff' }}
-                />
->>>>>>> f6aa14687c19e8a4686e9db9f2057df4c2f073d0
                 {item}
               </motion.li>
             ))}
@@ -166,28 +74,14 @@ function ExperienceCard({ data, index }) {
 
         {/* Tech stack chips */}
         <div>
-<<<<<<< HEAD
           <h4 className="text-xs font-mono tracking-widest text-gray-500 uppercase mb-3">Tech Stack</h4>
-=======
-          <h4 className="text-xs font-mono tracking-widest text-slate-500 uppercase mb-3">
-            Tech Stack
-          </h4>
->>>>>>> f6aa14687c19e8a4686e9db9f2057df4c2f073d0
           <div className="flex flex-wrap gap-2">
             {data.tech.map((t) => (
               <motion.span
                 key={t}
                 whileHover={{ scale: 1.06, y: -1 }}
                 className="px-3 py-1 rounded-full text-xs font-mono cursor-default transition-all duration-200"
-<<<<<<< HEAD
                 style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.05)', color: '#888' }}
-=======
-                style={{
-                  background: 'rgba(0,212,255,0.08)',
-                  border: '1px solid rgba(0,212,255,0.2)',
-                  color: '#00d4ff',
-                }}
->>>>>>> f6aa14687c19e8a4686e9db9f2057df4c2f073d0
               >
                 {t}
               </motion.span>
@@ -202,15 +96,7 @@ function ExperienceCard({ data, index }) {
 export default function Experience() {
   return (
     <section id="experience" className="py-28 relative overflow-hidden">
-<<<<<<< HEAD
       {/* Removed colored background decorations */}
-=======
-      {/* BG decoration */}
-      <div
-        className="absolute top-20 -right-20 w-96 h-96 rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(184,41,255,0.05), transparent 70%)' }}
-      />
->>>>>>> f6aa14687c19e8a4686e9db9f2057df4c2f073d0
 
       <div className="section-container">
         <SectionTitle
@@ -237,7 +123,6 @@ export default function Experience() {
               <motion.div
                 animate={{ scale: [1, 1.15, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
-<<<<<<< HEAD
                 className="w-12 h-12 rounded-flex flex items-center justify-center z-10"
                 style={{
                   background: 'rgba(255,255,255,0.03)',
@@ -251,37 +136,12 @@ export default function Experience() {
               <div>
                 <p className="text-sm font-medium text-gray-400">Open to New Opportunities</p>
                 <p className="text-xs text-gray-500 mt-1">Looking for exciting full-stack or cloud engineering roles. Let's build something great together!</p>
-=======
-                className="w-12 h-12 rounded-full flex items-center justify-center z-10"
-                style={{
-                  background: 'rgba(0,255,136,0.1)',
-                  border: '2px dashed rgba(0,255,136,0.4)',
-                }}
-              >
-                <span className="text-green-400 text-lg">+</span>
-              </motion.div>
-            </div>
-            <div
-              className="flex-1 glass-card p-6 mb-8 flex items-center gap-4"
-              style={{ border: '1px dashed rgba(0,255,136,0.2)' }}
-            >
-              <div>
-                <p className="text-sm font-semibold text-green-400">Open to New Opportunities</p>
-                <p className="text-xs text-slate-500 mt-1">
-                  Looking for exciting full-stack or cloud engineering roles. Let&apos;s build something great together!
-                </p>
->>>>>>> f6aa14687c19e8a4686e9db9f2057df4c2f073d0
               </div>
               <motion.div
                 animate={{ opacity: [0.5, 1, 0.5] }}
                 transition={{ duration: 2, repeat: Infinity }}
-<<<<<<< HEAD
                 className="flex-shrink-0 w-2 h-2 rounded-full bg-gray-300"
                 style={{ boxShadow: 'none' }}
-=======
-                className="flex-shrink-0 w-2 h-2 rounded-full bg-green-400"
-                style={{ boxShadow: '0 0 8px #00ff88' }}
->>>>>>> f6aa14687c19e8a4686e9db9f2057df4c2f073d0
               />
             </div>
           </motion.div>
@@ -289,8 +149,4 @@ export default function Experience() {
       </div>
     </section>
   )
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> f6aa14687c19e8a4686e9db9f2057df4c2f073d0
