@@ -14,6 +14,7 @@
     overflow-x: hidden;
   }
 
+  /* Light theme (default) */
   body {
     background-color: #f8f9fa;
     color: #212529;
@@ -22,7 +23,13 @@
     cursor: none;
   }
 
-  /* Custom scrollbar */
+  /* Dark theme (when .dark class is on html) */
+  .dark body {
+    background-color: #020408;
+    color: #e2e8f0;
+  }
+
+  /* Custom scrollbar - light */
   ::-webkit-scrollbar {
     width: 6px;
   }
@@ -36,6 +43,17 @@
   ::-webkit-scrollbar-thumb:hover {
     background: #5a6268;
   }
+
+  /* Custom scrollbar - dark */
+  .dark ::-webkit-scrollbar-track {
+    background: #020408;
+  }
+  .dark ::-webkit-scrollbar-thumb {
+    background: #6c757d;
+  }
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: #5a6268;
+  }
 }
 
 @layer components {
@@ -43,6 +61,9 @@
   .focus-ring:focus-visible {
     outline: 2px solid #dee2e6;
     outline-offset: 2px;
+  }
+  .dark .focus-ring:focus-visible {
+    outline-color: #06b6d4;
   }
 
   /* Section styling */
@@ -67,11 +88,17 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+  .dark .section-header h2 {
+    background: linear-gradient(135deg, #f8fafc, #94a3b8);
+  }
   .section-header p {
     color: #6c757d;
     font-size: 1.1rem;
     max-width: 600px;
     margin: 0 auto;
+  }
+  .dark .section-header p {
+    color: #94a3b8;
   }
 
   /* Buttons */
@@ -86,7 +113,7 @@
     transition: all 0.2s ease;
     cursor: pointer;
     border: none;
-    }
+  }
   .btn-primary {
     background-color: #212529;
     color: #fff;
@@ -95,12 +122,26 @@
     background-color: #343a40;
     transform: translateY(-1px);
   }
+  .dark .btn-primary {
+    background-color: #f8fafc;
+    color: #020408;
+  }
+  .dark .btn-primary:hover {
+    background-color: #e2e8f0;
+  }
   .btn-secondary {
     background-color: #e9ecef;
     color: #212529;
   }
   .btn-secondary:hover {
     background-color: #dee2e6;
+  }
+  .dark .btn-secondary {
+    background-color: #1e293b;
+    color: #f8fafc;
+  }
+  .dark .btn-secondary:hover {
+    background-color: #334155;
   }
   .btn-outline {
     background-color: transparent;
@@ -110,6 +151,14 @@
   .btn-outline:hover {
     border-color: #adb5bd;
     background-color: #f8f9fa;
+  }
+  .dark .btn-outline {
+    color: #94a3b8;
+    border-color: #334155;
+  }
+  .dark .btn-outline:hover {
+    border-color: #64748b;
+    background-color: #1e293b;
   }
 
   /* Nav links */
@@ -122,6 +171,12 @@
   .nav-link:hover {
     color: #212529;
   }
+  .dark .nav-link {
+    color: #94a3b8;
+  }
+  .dark .nav-link:hover {
+    color: #f8fafc;
+  }
   .nav-link::after {
     content: '';
     position: absolute;
@@ -131,6 +186,9 @@
     height: 2px;
     background-color: #212529;
     transition: width 0.3s ease;
+  }
+  .dark .nav-link::after {
+    background-color: #06b6d4;
   }
   .nav-link:hover::after {
     width: 100%;
@@ -143,9 +201,16 @@
     padding: 1.5rem;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.05);
   }
+  .dark .card {
+    background-color: #0f172a;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
+  }
   .card-hover:hover {
     box-shadow: 0 4px 6px rgba(0,0,0,0.1), 0 2px 4px rgba(0,0,0,0.05);
     transform: translateY(-2px);
+  }
+  .dark .card-hover:hover {
+    box-shadow: 0 4px 6px rgba(0,0,0,0.4), 0 2px 4px rgba(0,0,0,0.3);
   }
 
   /* Avatar */
@@ -155,6 +220,9 @@
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid #dee2e6;
+  }
+  .dark .avatar {
+    border-color: #334155;
   }
 
   /* Badge */
@@ -167,6 +235,10 @@
     font-weight: 500;
     background-color: #e9ecef;
     color: #495057;
+  }
+  .dark .badge {
+    background-color: #1e293b;
+    color: #94a3b8;
   }
 
   /* Timeline */
@@ -183,6 +255,9 @@
     width: 2px;
     background-color: #dee2e6;
   }
+  .dark .timeline::before {
+    background-color: #334155;
+  }
   .timeline-item {
     position: relative;
     padding-bottom: 1.5rem;
@@ -197,6 +272,9 @@
     border-radius: 50%;
     background-color: #6c757d;
   }
+  .dark .timeline-item::before {
+    background-color: #06b6d4;
+  }
 
   /* Table */
   .skill-bar {
@@ -204,6 +282,9 @@
     background-color: #e9ecef;
     border-radius: 9999px;
     overflow: hidden;
+  }
+  .dark .skill-bar {
+    background-color: #1e293b;
   }
   .skill-bar-fill {
     height: 100%;
