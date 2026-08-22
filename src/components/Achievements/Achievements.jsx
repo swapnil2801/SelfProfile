@@ -10,36 +10,28 @@ function AchievementCard({ data, index }) {
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 40, scale: 0.95 }}
-      animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
-      transition={{ delay: index * 0.1, duration: 0.5, ease: 'easeOut' }}
-      whileHover={{ y: -3, scale: 1.01 }}
-      className="p-6 rounded-lg border border-gray-600 transition-all duration-300 group cursor-default"
-      style={{ background: 'rgba(255,255,255,0.03)' }}
+      initial={{ opacity: 0, y: 24 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ delay: index * 0.08, duration: 0.5, ease: 'easeOut' }}
+      className="card p-6 group cursor-default"
     >
       {/* Metric badge */}
       <div className="flex items-start justify-between mb-4">
-        <div
-          className="w-12 h-12 rounded-lg flex items-center justify-center text-center"
-          style={{ background: 'rgba(255,255,255,0.05)' }}
-        >
+        <div className="w-12 h-12 border border-neutral-200 flex items-center justify-center text-center emoji-mono">
           {data.icon}
         </div>
         <div className="text-right">
-          <div
-            className="text-2xl font-black font-orbitron leading-none"
-            style={{ color: '#6c757d' }}
-          >
+          <div className="text-2xl font-serif text-neutral-900 leading-none">
             {data.metric}
           </div>
-          <div className="text-xs text-gray-500 mt-0.5">{data.metricLabel}</div>
+          <div className="text-xs text-neutral-400 mt-1">{data.metricLabel}</div>
         </div>
       </div>
 
-      <h3 className="text-sm font-medium text-gray-300 group-hover:text-gray-200 transition-colors">
+      <h3 className="text-sm font-semibold text-neutral-800 mb-2">
         {data.title}
       </h3>
-      <p className="text-xs text-gray-400 leading-relaxed">
+      <p className="text-xs text-neutral-500 leading-relaxed">
         {data.description}
       </p>
     </motion.div>
@@ -48,9 +40,7 @@ function AchievementCard({ data, index }) {
 
 export default function Achievements() {
   return (
-    <section id="achievements" className="py-28 relative overflow-hidden">
-      {/* Removed colored background decorations */}
-
+    <section id="achievements" className="py-28 bg-white">
       <div className="section-container">
         <SectionTitle
           eyebrow="Impact & Results"

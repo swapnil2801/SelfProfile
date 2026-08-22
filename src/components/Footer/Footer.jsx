@@ -1,5 +1,4 @@
-import { motion } from 'framer-motion'
-import { FaGithub, FaLinkedin, FaEnvelope, FaHeart } from 'react-icons/fa'
+import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
 import { Link } from 'react-scroll'
 import { personalInfo } from '../../data/portfolioData'
 
@@ -13,26 +12,21 @@ const navLinks = [
 
 export default function Footer() {
   return (
-    <footer
-      className="relative pt-16 pb-8 overflow-hidden border-t border-gray-600/20"
-    >
+    <footer className="relative pt-16 pb-8 bg-white border-t border-neutral-200">
       <div className="section-container">
         <div className="grid md:grid-cols-3 gap-10 mb-12">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <div
-                className="w-10 h-10 rounded-lg flex items-center justify-center font-orbitron font-bold text-sm"
-                style={{ background: 'rgba(33,37,41,0.5)', border: '1px solid rgba(255,255,255,0.08)', color: '#fff' }}
-              >
+              <div className="w-9 h-9 bg-neutral-900 text-white flex items-center justify-center font-serif text-sm font-semibold">
                 SP
               </div>
               <div>
-                <p className="font-orbitron text-sm font-bold text-gray-200">SWAPNIL PATIL</p>
-                <p className="text-xs text-gray-500">Full Stack Dev & DevOps</p>
+                <p className="font-serif text-sm text-neutral-900">Swapnil Patil</p>
+                <p className="text-xs text-neutral-400">Full Stack Dev & DevOps</p>
               </div>
             </div>
-            <p className="text-xs text-gray-500 leading-relaxed max-w-xs">
+            <p className="text-xs text-neutral-500 leading-relaxed max-w-xs">
               Building scalable web apps and cloud pipelines from Pune, India.
               Always open to new opportunities and collaborations.
             </p>
@@ -40,7 +34,7 @@ export default function Footer() {
 
           {/* Quick links */}
           <div>
-            <h4 className="text-xs font-mono text-gray-500 tracking-widest uppercase mb-4">
+            <h4 className="text-xs font-mono text-neutral-400 tracking-[0.2em] uppercase mb-4">
               Quick Links
             </h4>
             <ul className="space-y-2">
@@ -50,9 +44,8 @@ export default function Footer() {
                     to={link.to}
                     smooth
                     duration={600}
-                    className="text-sm text-gray-400 hover:text-gray-300 transition-colors cursor-pointer flex items-center gap-2"
+                    className="text-sm text-neutral-500 hover:text-neutral-900 transition-colors cursor-pointer"
                   >
-                    <span className="w-0 group-hover:w-3 h-px bg-gray-600 transition-all duration-300 overflow-hidden" />
                     {link.label}
                   </Link>
                 </li>
@@ -62,7 +55,7 @@ export default function Footer() {
 
           {/* Social */}
           <div>
-            <h4 className="text-xs font-mono text-gray-500 tracking-widest uppercase mb-4">
+            <h4 className="text-xs font-mono text-neutral-400 tracking-[0.2em] uppercase mb-4">
               Connect
             </h4>
             <div className="flex gap-3">
@@ -71,52 +64,31 @@ export default function Footer() {
                 { href: personalInfo.linkedin, icon: <FaLinkedin size={18} />, label: 'LinkedIn' },
                 { href: `mailto:${personalInfo.email}`, icon: <FaEnvelope size={16} />, label: 'Email' },
               ].map(({ href, icon, label }) => (
-                <motion.a
+                <a
                   key={label}
                   href={href}
                   target="_blank"
                   rel="noreferrer"
                   aria-label={label}
-                  whileHover={{ y: -3, scale: 1.1 }}
-                  className="w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300"
-                  style={{
-                    background: 'rgba(255,255,255,0.03)',
-                    border: '1px solid rgba(255,255,255,0.05)',
-                    color: '#fff',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = 'rgba(255,255,255,0.05)'
-                    e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'
-                    e.currentTarget.style.boxShadow = 'none'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = 'rgba(255,255,255,0.03)'
-                    e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)'
-                    e.currentTarget.style.boxShadow = 'none'
-                  }}
+                  className="w-10 h-10 border border-neutral-200 flex items-center justify-center text-neutral-500 hover:text-neutral-900 hover:border-neutral-900 transition-colors duration-200"
                 >
                   {icon}
-                </motion.a>
+                </a>
               ))}
             </div>
           </div>
         </div>
 
         {/* Divider */}
-        <div
-          className="h-px w-full mb-6"
-          style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent)' }}
-        />
+        <div className="h-px w-full mb-6 bg-neutral-100" />
 
         {/* Bottom bar */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-500">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-neutral-400">
           <p>© {new Date().getFullYear()} Swapnil Patil. All rights reserved.</p>
-          <p className="flex items-center gap-1.5">
-            Built with React & Framer Motion
-          </p>
+          <p>Built with React & Framer Motion</p>
           <button
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' }) }
-            className="flex items-center gap-1.5 text-gray-500 hover:text-gray-300 transition-colors"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="text-neutral-400 hover:text-neutral-900 transition-colors"
           >
             Back to top &uarr;
           </button>
