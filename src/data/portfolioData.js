@@ -63,6 +63,7 @@ export const skills = [
 ]
 
 export const tools = [
+  { name: 'Hermes Agent', icon: 'hermes', category: 'AI Agent' },
   { name: 'Azure DevOps', icon: 'azure', category: 'DevOps' },
   { name: 'AWS', icon: 'aws', category: 'Cloud' },
   { name: 'GCP', icon: 'gcp', category: 'Cloud' },

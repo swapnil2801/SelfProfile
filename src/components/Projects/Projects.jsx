@@ -1,47 +1,86 @@
-import { useRef, useState } from 'react'
-import { motion, useInView, AnimatePresence } from 'framer-motion'
-import { FaGithub, FaExternalLinkAlt, FaCode } from 'react-icons/fa'
+import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
+import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa'
 import { projects } from '../../data/portfolioData'
 import SectionTitle from '../common/SectionTitle'
 
 function ProjectCard({ project, index }) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-60px' })
-  const [hovered, setHovered] = useState(false)
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 24 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ delay: index * 0.15, duration: 0.6, ease: 'easeOut' }}
-      whileHover={{ y: -4 }}
-      className="overflow-hidden rounded-lg border border-gray-700 transition-all duration-300 group"
-      style={{ background: 'rgba(33,37,41,0.5)' }}
+      transition={{ delay: index * 0.1, duration: 0.55, ease: 'easeOut' }}
+      className="card flex flex-col group"
     >
       {/* Card header */}
-      <div className="relative p-5">
+      <div className="p-6 pb-0">
         {/* Category + featured badge */}
-        <div className="flex items-center gap-2 mb-3">
-          <span className="text-xs font-mono text-gray-400">{project.category}</span>
+        <div className="flex items-center justify-between gap-2 mb-4">
+          <span className="text-xs font-mono text-neutral-400 uppercase tracking-wider">{project.category}</span>
           {project.featured && (
-            <span
-              className="text-xs px-2 py-0.5 rounded-full font-mono font-semibold"
-              style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: '#ccc' }}
-            >
-              ★ Featured
-            </span>
+            <span className="chip font-mono font-semibold">Featured</span>
           )}
         </div>
 
-        <h3 className="text-lg font-bold text-gray-200 group-hover:text-gray-100 transition-colors duration-300">
+        <h3 className="font-serif text-xl md:text-2xl text-neutral-900 mb-3">
           {project.title}
         </h3>
       </div>
 
       {/* Description */}
-      <div className="p-5 text-sm text-gray-400 leading-relaxed mb-6">
+      <p className="px-6 text-sm text-neutral-600 leading-relaxed flex-1">
         {project.description}
+      </p>
+
+      {/* Features */}
+      {project.features && (
+        <ul className="px-6 mt-4 grid grid-cols-2 gap-x-4 gap-y-1.5">
+          {project.features.map((f) => (
+            <li key={f} className="text-xs text-neutral-500 flex items-center gap-2">
+              <span className="w-1 h-1 bg-neutral-900 flex-shrink-0" />
+              {f}
+            </li>
+          ))}
+        </ul>
+      )}
+
+      {/* Tech + links */}
+      <div className="p-6 mt-4 border-t border-neutral-100 flex items-end justify-between gap-4">
+        <div className="flex flex-wrap gap-2">
+          {project.tech.map((t) => (
+            <span key={t} className="chip font-mono cursor-default">
+              {t}
+            </span>
+          ))}
+        </div>
+        <div className="flex items-center gap-3 flex-shrink-0">
+          {project.github && project.github !== '#' && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`${project.title} on GitHub`}
+              className="text-neutral-400 hover:text-neutral-900 transition-colors"
+            >
+              <FaGithub size={18} />
+            </a>
+          )}
+          {project.live && project.live !== '#' && (
+            <a
+              href={project.live}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`${project.title} live site`}
+              className="text-neutral-400 hover:text-neutral-900 transition-colors"
+            >
+              <FaExternalLinkAlt size={14} />
+            </a>
+          )}
+        </div>
       </div>
     </motion.div>
   )
@@ -49,9 +88,7 @@ function ProjectCard({ project, index }) {
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-28 relative overflow-hidden">
-      {/* Removed colored background elements */}
-
+    <section id="projects" className="py-28 bg-neutral-50 border-y border-neutral-200">
       <div className="section-container">
         <SectionTitle
           eyebrow="What I've Built"
@@ -67,28 +104,17 @@ export default function Projects() {
 
         {/* View all link */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-          className="mt-10 text-center"
+          transition={{ delay: 0.3, duration: 0.5 }}
+          className="mt-12 text-center"
         >
           <a
             href="https://github.com/swapnil2801?tab=repositories"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 hover:scale-105"
-            style={{
-              background: 'rgba(255,255,255,0.03)',
-              border: '1px solid rgba(255,255,255,0.05)',
-              color: '#aaa',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'rgba(255,255,255,0.05)'
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'rgba(255,255,255,0.03)'
-            }}
+            className="btn-outline focus-ring"
           >
             <FaGithub /> View All Projects on GitHub
           </a>

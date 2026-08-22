@@ -5,10 +5,10 @@ import { personalInfo } from '../../data/portfolioData'
 import SectionTitle from '../common/SectionTitle'
 
 const stats = [
-  { value: '2+', label: 'Years Exp.', icon: <FaBriefcase size={14} />, color: '#212529' },
-  { value: '10+', label: 'Projects', icon: <FaRocket size={14} />, color: '#6c757d' },
-  { value: '5+', label: 'AI / LLM Apps', icon: '🤖', color: '#495057' },
-  { value: '99.9%', label: 'Uptime SLA', icon: '☁️', color: '#212529' },
+  { value: '2+', label: 'Years Exp.', icon: <FaBriefcase size={14} /> },
+  { value: '10+', label: 'Projects', icon: <FaRocket size={14} /> },
+  { value: '5+', label: 'AI / LLM Apps', icon: <span className="emoji-mono">🤖</span> },
+  { value: '99.9%', label: 'Uptime SLA', icon: <span className="emoji-mono">☁️</span> },
 ]
 
 const whoIAm = [
@@ -28,14 +28,12 @@ export default function About() {
   const inView = useInView(ref, { once: true, margin: '-100px' })
 
   const card = {
-    hidden: { opacity: 0, y: 28 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: 'easeOut' } },
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
   }
 
   return (
-    <section id="about" className="py-24 relative overflow-hidden">
-      {/* Removed photo avatar divs - b&w professional theme */}
-
+    <section id="about" className="py-24 bg-neutral-50 border-y border-neutral-200">
       <div className="section-container" ref={ref}>
         <SectionTitle
           eyebrow="Get to Know Me"
@@ -46,24 +44,24 @@ export default function About() {
         <motion.div
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
-          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.12 } } }}
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
           className="grid lg:grid-cols-2 gap-8 mt-14"
         >
           {/* LEFT */}
           <div className="flex flex-col gap-5">
             {/* Who I Am */}
-            <motion.div variants={card} className="p-5 border border-gray-700 rounded-lg transition-all duration-300 hover:border-gray-600">
+            <motion.div variants={card} className="card p-6 bg-white">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-9 h-9 rounded-lg flex items-center justify-center text-lg flex-shrink-0" style={{ background: 'rgba(33,37,41,0.5)' }}>
+                <div className="w-9 h-9 border border-neutral-200 flex items-center justify-center text-lg flex-shrink-0 emoji-mono">
                   👨‍💻
                 </div>
-                <h3 className="font-semibold text-gray-200 text-sm">Who I Am</h3>
+                <h3 className="font-semibold text-neutral-900 text-sm tracking-wide uppercase">Who I Am</h3>
               </div>
-              <p className="text-gray-400 text-sm leading-relaxed mb-4">{personalInfo.bio}</p>
+              <p className="text-neutral-600 text-sm leading-relaxed mb-4">{personalInfo.bio}</p>
               <ul className="space-y-2">
                 {whoIAm.map((item) => (
-                  <li key={item} className="flex items-start gap-2 text-xs text-gray-400">
-                    <FaCheckCircle size={11} className="text-gray-500 flex-shrink-0 mt-0.5" />
+                  <li key={item} className="flex items-start gap-2 text-xs text-neutral-500">
+                    <FaCheckCircle size={11} className="text-neutral-400 flex-shrink-0 mt-0.5" />
                     {item}
                   </li>
                 ))}
@@ -71,18 +69,18 @@ export default function About() {
             </motion.div>
 
             {/* What I Do */}
-            <motion.div variants={card} className="p-5 border border-gray-700 rounded-lg transition-all duration-300 hover:border-gray-600">
+            <motion.div variants={card} className="card p-6 bg-white">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-9 h-9 rounded-lg flex items-center justify-center text-lg flex-shrink-0" style={{ background: 'rgba(33,37,41,0.5)' }}>
+                <div className="w-9 h-9 border border-neutral-200 flex items-center justify-center text-lg flex-shrink-0 emoji-mono">
                   🎯
                 </div>
-                <h3 className="font-semibold text-gray-200 text-sm">What I Do</h3>
+                <h3 className="font-semibold text-neutral-900 text-sm tracking-wide uppercase">What I Do</h3>
               </div>
-              <p className="text-gray-400 text-sm leading-relaxed mb-4">{personalInfo.bio2}</p>
+              <p className="text-neutral-600 text-sm leading-relaxed mb-4">{personalInfo.bio2}</p>
               <ul className="space-y-2">
                 {whatIDo.map((item) => (
-                  <li key={item} className="flex items-start gap-2 text-xs text-gray-400">
-                    <FaCheckCircle size={11} className="text-gray-500 flex-shrink-0 mt-0.5" />
+                  <li key={item} className="flex items-start gap-2 text-xs text-neutral-500">
+                    <FaCheckCircle size={11} className="text-neutral-400 flex-shrink-0 mt-0.5" />
                     {item}
                   </li>
                 ))}
@@ -91,11 +89,11 @@ export default function About() {
 
             {/* Chips */}
             <motion.div variants={card} className="flex flex-wrap gap-3">
-              <div className="flex items-center gap-2 px-3 py-2 rounded-full text-xs font-mono" style={{ background: 'rgba(33,37,41,0.3)', border: '1px solid rgba(255,255,255,0.1)', color: '#ccc' }}>
+              <div className="chip flex items-center gap-2 font-mono">
                 <FaMapMarkerAlt size={11} /> {personalInfo.location}
               </div>
-              <div className="flex items-center gap-2 px-3 py-2 rounded-full text-xs font-mono" style={{ background: 'rgba(33,37,41,0.3)', border: '1px solid rgba(255,255,255,0.1)', color: '#888' }}>
-                💼 Arieotech Solutions
+              <div className="chip flex items-center gap-2 font-mono">
+                <span className="emoji-mono">💼</span> Arieotech Solutions
               </div>
             </motion.div>
           </div>
@@ -105,38 +103,36 @@ export default function About() {
             {/* Stats grid */}
             <motion.div variants={card} className="grid grid-cols-2 gap-4">
               {stats.map((stat, i) => (
-                <motion.div
+                <div
                   key={i}
-                  whileHover={{ scale: 1.04, y: -3 }}
-                  className="p-4 text-center border border-gray-700 rounded-lg transition-all duration-300 cursor-default"
-                  style={{ borderColor: 'rgba(255,255,255,0.1)' }}
+                  className="card p-5 text-center bg-white cursor-default"
                 >
-                  <div className="w-8 h-8 rounded-lg flex items-center justify-center mx-auto mb-2" style={{ background: 'rgba(255,255,255,0.05)', color: '#fff' }}>
+                  <div className="w-8 h-8 border border-neutral-200 flex items-center justify-center mx-auto mb-3 text-neutral-700">
                     {stat.icon}
                   </div>
-                  <div className="text-xl font-bold font-orbitron" style={{ color: '#fff' }}>{stat.value}</div>
-                  <div className="text-xs text-gray-500 mt-0.5">{stat.label}</div>
-                </motion.div>
+                  <div className="text-2xl font-serif text-neutral-900">{stat.value}</div>
+                  <div className="text-xs text-neutral-500 mt-1">{stat.label}</div>
+                </div>
               ))}
             </motion.div>
 
             {/* Compact terminal */}
-            <motion.div variants={card} className="p-4 border border-gray-700 rounded-lg transition-all duration-300" style={{ borderColor: 'rgba(255,255,255,0.1)' }}>
-              <div className="flex items-center gap-2 px-4 py-2.5 border-b border-gray-600/5">
-                <div className="w-2.5 h-2.5 rounded-full bg-gray-600/50" />
-                <div className="w-2.5 h-2.5 rounded-full bg-gray-600/50" />
-                <div className="w-2.5 h-2.5 rounded-full bg-gray-600/50" />
-                <span className="ml-2 text-xs font-mono text-gray-400">swapnil.config.py</span>
+            <motion.div variants={card} className="card bg-white overflow-hidden">
+              <div className="flex items-center gap-2 px-4 py-2.5 border-b border-neutral-200 bg-neutral-50">
+                <div className="w-2.5 h-2.5 rounded-full border border-neutral-300" />
+                <div className="w-2.5 h-2.5 rounded-full border border-neutral-300" />
+                <div className="w-2.5 h-2.5 rounded-full border border-neutral-300" />
+                <span className="ml-2 text-xs font-mono text-neutral-500">swapnil.config.py</span>
               </div>
-              <pre className="p-4 text-xs font-mono leading-6 overflow-x-auto">
+              <pre className="p-4 text-xs font-mono leading-6 overflow-x-auto text-neutral-700">
                 <code>
-                  <span className="text-gray-400">swapnil</span><span className="text-white"> = {'{'}</span>{'\n'}
-                  <span className="text-gray-400">  role</span><span className="text-white">: </span><span className="text-gray-300">'Backend · AI · DevOps'</span><span className="text-white">,</span>{'\n'}
-                  <span className="text-gray-400">  focus</span><span className="text-white">: [</span><span className="text-gray-300">'AI Agents'</span><span className="text-white">, </span><span className="text-gray-300">'Python'</span><span className="text-white">, </span><span className="text-gray-300">'LLMs'</span><span className="text-white">],</span>{'\n'}
-                  <span className="text-gray-400">  infra</span><span className="text-white">: [</span><span className="text-gray-300">'Linux'</span><span className="text-white">, </span><span className="text-gray-300">'AWS'</span><span className="text-white">, </span><span className="text-gray-300">'Azure DevOps'</span><span className="text-white">],</span>{'\n'}
-                  <span className="text-gray-400">  aiTools</span><span className="text-white">: [</span><span className="text-gray-300">'LiteLLM'</span><span className="text-white">, </span><span className="text-gray-300">'Claude Code'</span><span className="text-white">],</span>{'\n'}
-                  <span className="text-gray-400">  available</span><span className="text-white">: </span><span className="text-gray-300">True</span>{'\n'}
-                  <span className="text-white">{'}'}</span>
+                  <span className="text-neutral-500">swapnil</span><span className="text-neutral-900"> = {'{'}</span>{'\n'}
+                  <span className="text-neutral-500">  role</span><span className="text-neutral-900">: </span><span className="text-neutral-700">'Backend · AI · DevOps'</span><span className="text-neutral-900">,</span>{'\n'}
+                  <span className="text-neutral-500">  focus</span><span className="text-neutral-900">: [</span><span className="text-neutral-700">'AI Agents'</span><span className="text-neutral-900">, </span><span className="text-neutral-700">'Python'</span><span className="text-neutral-900">, </span><span className="text-neutral-700">'LLMs'</span><span className="text-neutral-900">],</span>{'\n'}
+                  <span className="text-neutral-500">  infra</span><span className="text-neutral-900">: [</span><span className="text-neutral-700">'Linux'</span><span className="text-neutral-900">, </span><span className="text-neutral-700">'AWS'</span><span className="text-neutral-900">, </span><span className="text-neutral-700">'Azure DevOps'</span><span className="text-neutral-900">],</span>{'\n'}
+                  <span className="text-neutral-500">  aiTools</span><span className="text-neutral-900">: [</span><span className="text-neutral-700">'LiteLLM'</span><span className="text-neutral-900">, </span><span className="text-neutral-700">'Claude Code'</span><span className="text-neutral-900">],</span>{'\n'}
+                  <span className="text-neutral-500">  available</span><span className="text-neutral-900">: </span><span className="text-neutral-700">True</span>{'\n'}
+                  <span className="text-neutral-900">{'}'}</span>
                 </code>
               </pre>
             </motion.div>
