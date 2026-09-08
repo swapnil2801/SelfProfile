@@ -13,25 +13,28 @@ function AchievementCard({ data, index }) {
       initial={{ opacity: 0, y: 24 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ delay: index * 0.08, duration: 0.5, ease: 'easeOut' }}
-      className="card p-6 group cursor-default"
+      className="glass glass-lumen p-6 group cursor-default"
     >
       {/* Metric badge */}
       <div className="flex items-start justify-between mb-4">
-        <div className="w-12 h-12 border border-neutral-200 flex items-center justify-center text-center emoji-mono">
+        <div className="w-12 h-12 rounded-md border border-slate-500/25 bg-void-800/60 flex items-center justify-center text-center emoji-mono text-xl">
           {data.icon}
         </div>
         <div className="text-right">
-          <div className="text-2xl font-serif text-neutral-900 leading-none">
+          <div
+            className="text-2xl font-display font-bold leading-none"
+            style={{ color: data.color, textShadow: `0 0 18px ${data.color}55` }}
+          >
             {data.metric}
           </div>
-          <div className="text-xs text-neutral-400 mt-1">{data.metricLabel}</div>
+          <div className="text-xs text-slate-500 mt-1 font-mono">{data.metricLabel}</div>
         </div>
       </div>
 
-      <h3 className="text-sm font-semibold text-neutral-800 mb-2">
+      <h3 className="text-sm font-semibold text-slate-200 mb-2 group-hover:text-slate-50 transition-colors">
         {data.title}
       </h3>
-      <p className="text-xs text-neutral-500 leading-relaxed">
+      <p className="text-xs text-slate-500 leading-relaxed">
         {data.description}
       </p>
     </motion.div>
@@ -40,8 +43,14 @@ function AchievementCard({ data, index }) {
 
 export default function Achievements() {
   return (
-    <section id="achievements" className="py-28 bg-white">
-      <div className="section-container">
+    <section id="achievements" className="relative py-28 overflow-hidden">
+      {/* Ambient glow */}
+      <div
+        className="absolute top-0 right-1/4 w-[32rem] h-56 bg-neon-violet/5 blur-3xl rounded-full pointer-events-none"
+        aria-hidden="true"
+      />
+
+      <div className="section-container relative">
         <SectionTitle
           eyebrow="Impact & Results"
           title="Achievements"

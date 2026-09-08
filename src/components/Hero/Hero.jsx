@@ -13,22 +13,95 @@ const fadeUp = {
   }),
 }
 
+/* Holographic system-status card — HUD motif, real facts only */
+function SystemStatusCard({ prefersReducedMotion }) {
+  return (
+    <div className="relative" aria-label="System status summary">
+      {/* Orbit rings behind the card */}
+      {!prefersReducedMotion && (
+        <div className="absolute -inset-10 flex items-center justify-center pointer-events-none" aria-hidden="true">
+          <div className="w-[26rem] h-[26rem] max-w-none rounded-full border border-neon-cyan/10 animate-orbit-slow">
+            <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-neon-cyan/80 shadow-glow-cyan" />
+          </div>
+          <div className="absolute w-[20rem] h-[20rem] rounded-full border border-neon-violet/10 animate-orbit-slower">
+            <span className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-1 h-1 rounded-full bg-neon-violet/80 shadow-glow-violet" />
+          </div>
+        </div>
+      )}
+
+      <div className="glass glass-lumen hud-corners relative p-0 overflow-hidden w-full max-w-sm">
+        {/* Header */}
+        <div className="terminal-header">
+          <span className="terminal-dot bg-rose-500/70" />
+          <span className="terminal-dot bg-amber-400/70" />
+          <span className="terminal-dot bg-emerald-400/70" />
+          <span className="ml-2 text-[0.65rem] font-mono text-slate-400 tracking-wider">swapnil@pune:~ sys.status</span>
+        </div>
+
+        {/* Body */}
+        <div className="p-5 font-mono text-xs leading-6">
+          <p className="text-slate-500 mb-3">
+            <span className="text-neon-cyan">$</span> whoami --verbose
+          </p>
+
+          <dl className="space-y-2.5">
+            {[
+              { k: 'OPERATOR', v: 'Swapnil Patil', accent: 'text-slate-100' },
+              { k: 'ROLE', v: 'Backend · AI · DevOps', accent: 'text-neon-cyan' },
+              { k: 'AGENT_STACK', v: 'Hermes Agent · LiteLLM', accent: 'text-neon-violet' },
+              { k: 'INFRA', v: 'Linux · AWS · Azure DevOps', accent: 'text-slate-300' },
+              { k: 'LOCATION', v: 'Pune, India', accent: 'text-slate-300' },
+            ].map(({ k, v, accent }) => (
+              <div key={k} className="flex items-center justify-between gap-4">
+                <dt className="text-[0.6rem] tracking-[0.2em] text-slate-500">{k}</dt>
+                <dd className={`${accent} text-right`}>{v}</dd>
+              </div>
+            ))}
+          </dl>
+
+          {/* Status row */}
+          <div className="mt-4 pt-4 border-t border-slate-500/15 flex items-center justify-between">
+            <span className="flex items-center gap-2 text-[0.6rem] tracking-[0.2em] text-slate-500 uppercase">
+              <span className="led" aria-hidden="true" />
+              Agents Online
+            </span>
+            <span className="text-neon-green text-[0.65rem]">
+              AVAILABLE FOR WORK
+              {!prefersReducedMotion && <span className="animate-ticker inline-block ml-1 text-neon-cyan">▊</span>}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function Hero() {
   const prefersReducedMotion = useReducedMotion()
 
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center bg-white overflow-hidden"
+      className="relative min-h-screen flex items-center overflow-hidden"
     >
-      {/* Subtle vertical rules — editorial grid feel */}
-      <div className="absolute inset-y-0 left-6 md:left-12 w-px bg-neutral-100 pointer-events-none" aria-hidden="true" />
-      <div className="absolute inset-y-0 right-6 md:right-12 w-px bg-neutral-100 pointer-events-none" aria-hidden="true" />
-      {/* Faint horizontal rule anchoring the composition */}
-      <div className="absolute left-0 right-0 top-1/2 h-px bg-neutral-50 pointer-events-none hidden lg:block" aria-hidden="true" />
+      {/* Floating accent particles (CSS only, decorative) */}
+      {!prefersReducedMotion && (
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <span className="absolute top-[22%] left-[12%] w-1 h-1 rounded-full bg-neon-cyan/70 animate-float-dot" />
+          <span className="absolute top-[65%] left-[8%] w-1.5 h-1.5 rounded-full bg-neon-violet/60 animate-float-dot [animation-delay:2s]" />
+          <span className="absolute top-[30%] right-[15%] w-1 h-1 rounded-full bg-neon-magenta/60 animate-float-dot [animation-delay:4s]" />
+          <span className="absolute top-[75%] right-[22%] w-1 h-1 rounded-full bg-neon-cyan/50 animate-float-dot [animation-delay:6s]" />
+        </div>
+      )}
+
+      {/* Horizon glow line at hero base */}
+      <div
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 h-px w-3/4 bg-gradient-to-r from-transparent via-neon-cyan/30 to-transparent"
+        aria-hidden="true"
+      />
 
       <div className="section-container relative z-10 py-32 md:py-24 w-full">
-        <div className="grid lg:grid-cols-[1fr_auto] gap-12 items-center">
+        <div className="grid lg:grid-cols-[1fr_auto] gap-14 items-center">
           <div className="max-w-3xl">
             {/* Role line */}
             <motion.p
@@ -36,8 +109,9 @@ export default function Hero() {
               initial="hidden"
               animate="visible"
               custom={0.1}
-              className="font-mono text-neutral-500 text-xs md:text-sm mb-6 tracking-[0.3em] uppercase"
+              className="font-mono text-neon-cyan/80 text-xs md:text-sm mb-6 tracking-[0.3em] uppercase"
             >
+              <span className="text-slate-600 mr-2">{'//'}</span>
               Backend Engineer&ensp;·&ensp;AI Creator
             </motion.p>
 
@@ -47,11 +121,11 @@ export default function Hero() {
               initial="hidden"
               animate="visible"
               custom={0.2}
-              className="font-serif text-5xl md:text-7xl lg:text-8xl text-neutral-900 mb-6 leading-[0.95] tracking-tight"
+              className="font-display font-bold text-5xl md:text-7xl lg:text-8xl mb-6 leading-[0.95] tracking-tight"
             >
-              Swapnil
+              <span className="text-slate-100">Swapnil</span>
               <br />
-              Patil
+              <span className="text-gradient">Patil</span>
             </motion.h1>
 
             {/* Typing animation */}
@@ -60,9 +134,9 @@ export default function Hero() {
               initial="hidden"
               animate="visible"
               custom={0.35}
-              className="text-neutral-700 text-lg md:text-2xl mb-5 h-10 flex items-center"
+              className="text-slate-300 text-lg md:text-2xl mb-5 h-10 flex items-center"
             >
-              <span className="text-neutral-400 mr-2 font-light">I build</span>
+              <span className="text-slate-500 mr-2 font-light">I build</span>
               <TypeAnimation
                 sequence={[
                   'Autonomous AI Workflows', 2200,
@@ -75,7 +149,7 @@ export default function Hero() {
                 wrapper="span"
                 speed={50}
                 repeat={Infinity}
-                className="font-semibold text-neutral-900"
+                className="font-semibold text-neon-cyan"
               />
             </motion.div>
 
@@ -89,17 +163,17 @@ export default function Hero() {
             >
               <Link to="ai-creator" smooth duration={700} offset={-70}>
                 <button
-                  className="group inline-flex items-center gap-3 border border-neutral-900 bg-neutral-900 text-white pl-3 pr-4 py-2 text-xs md:text-sm font-medium hover:bg-white hover:text-neutral-900 transition-colors duration-200 focus-ring"
+                  className="group inline-flex items-center gap-3 rounded-lg border border-neon-violet/40 bg-gradient-to-r from-neon-cyan/10 to-neon-violet/10 text-slate-100 pl-3 pr-4 py-2 text-xs md:text-sm font-medium hover:border-neon-violet/80 hover:shadow-glow-violet transition-all duration-200 focus-ring"
                   aria-label="Learn about my Hermes Agent AI workflows"
                 >
-                  <FaFeatherAlt size={12} aria-hidden="true" />
+                  <FaFeatherAlt size={12} aria-hidden="true" className="text-neon-violet" />
                   <span className="font-mono tracking-wide">
                     Building autonomous AI workflows with Hermes Agent
                   </span>
                   <FaArrowRight
                     size={10}
                     aria-hidden="true"
-                    className="transition-transform duration-200 group-hover:translate-x-1"
+                    className="text-neon-cyan transition-transform duration-200 group-hover:translate-x-1"
                   />
                 </button>
               </Link>
@@ -111,7 +185,7 @@ export default function Hero() {
               initial="hidden"
               animate="visible"
               custom={0.5}
-              className="text-neutral-500 text-sm md:text-base max-w-lg mb-10 leading-relaxed"
+              className="text-slate-400 text-sm md:text-base max-w-lg mb-10 leading-relaxed"
             >
               {personalInfo.tagline}
             </motion.p>
@@ -155,44 +229,28 @@ export default function Hero() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={label}
-                  className="focus-ring w-10 h-10 border border-neutral-200 flex items-center justify-center text-neutral-500 hover:text-neutral-900 hover:border-neutral-900 transition-colors duration-200"
+                  className="focus-ring w-10 h-10 rounded-md border border-slate-500/25 bg-void-800/50 flex items-center justify-center text-slate-400 hover:text-neon-cyan hover:border-neon-cyan/60 hover:shadow-glow-cyan transition-all duration-200"
                 >
                   {icon}
                 </a>
               ))}
-              <div className="h-px w-20 bg-neutral-200 ml-2" aria-hidden="true" />
-              <span className="text-[0.65rem] font-mono text-neutral-400 tracking-widest uppercase hidden sm:block">
+              <div className="h-px w-20 bg-gradient-to-r from-slate-500/40 to-transparent ml-2" aria-hidden="true" />
+              <span className="text-[0.65rem] font-mono text-slate-500 tracking-widest uppercase hidden sm:block">
                 {personalInfo.location}
               </span>
             </motion.div>
           </div>
 
-          {/* Right column — editorial index card (desktop only) */}
+          {/* Right column — holographic system status card (desktop only) */}
           <motion.aside
             variants={fadeUp}
             initial="hidden"
             animate="visible"
             custom={0.8}
-            className="hidden lg:block w-64 border-l border-neutral-200 pl-8 self-center"
+            className="hidden lg:block self-center"
             aria-label="Profile summary"
           >
-            <ul className="space-y-7">
-              {[
-                { n: '01', t: 'Backend', d: 'APIs, microservices, Python & .NET Core' },
-                { n: '02', t: 'AI Systems', d: 'Agent orchestration, LLM tooling, automation' },
-                { n: '03', t: 'Infrastructure', d: 'Linux, AWS, Azure DevOps, CI/CD' },
-              ].map(({ n, t, d }) => (
-                <li key={n}>
-                  <div className="flex items-baseline gap-3">
-                    <span className="font-mono text-[0.65rem] text-neutral-300">{n}</span>
-                    <div>
-                      <p className="font-serif text-lg text-neutral-900 leading-snug">{t}</p>
-                      <p className="text-xs text-neutral-500 mt-1 leading-relaxed">{d}</p>
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ul>
+            <SystemStatusCard prefersReducedMotion={prefersReducedMotion} />
           </motion.aside>
         </div>
 
@@ -204,11 +262,11 @@ export default function Hero() {
           className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
           aria-hidden="true"
         >
-          <span className="text-[0.6rem] text-neutral-400 font-mono tracking-[0.3em] uppercase">Scroll</span>
+          <span className="text-[0.6rem] text-slate-500 font-mono tracking-[0.3em] uppercase">Scroll</span>
           <motion.div
             animate={prefersReducedMotion ? {} : { y: [0, 5, 0] }}
             transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-            className="text-neutral-400"
+            className="text-neon-cyan/70"
           >
             <FaArrowDown size={12} />
           </motion.div>

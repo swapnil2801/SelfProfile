@@ -22,7 +22,7 @@ export default function App() {
 
   return (
     <>
-      {/* Minimal page loader */}
+      {/* Boot loader */}
       <AnimatePresence mode="wait">
         {loading && (
           <PageLoader key="loader" onComplete={() => setLoading(false)} />
@@ -31,22 +31,30 @@ export default function App() {
 
       {/* Main site – only shown after loader */}
       {!loading && (
-        <div className="relative min-h-screen bg-white overflow-x-hidden">
-          <Navbar />
+        <div className="relative min-h-screen bg-void-900 overflow-x-hidden">
+          {/* Fixed decorative layers: grid, noise, ambient glows, scanline */}
+          <div className="bg-glow-overlay" aria-hidden="true" />
+          <div className="bg-grid-overlay" aria-hidden="true" />
+          <div className="bg-noise-overlay" aria-hidden="true" />
+          <div className="scanline-sweep" aria-hidden="true" />
 
-          <main>
-            <Hero />
-            <About />
-            <AiCreator />
-            <TechStack />
-            <Tools />
-            <Experience />
-            <Projects />
-            <Achievements />
-            <Contact />
-          </main>
+          <div className="relative z-10">
+            <Navbar />
 
-          <Footer />
+            <main>
+              <Hero />
+              <About />
+              <AiCreator />
+              <TechStack />
+              <Tools />
+              <Experience />
+              <Projects />
+              <Achievements />
+              <Contact />
+            </main>
+
+            <Footer />
+          </div>
         </div>
       )}
     </>

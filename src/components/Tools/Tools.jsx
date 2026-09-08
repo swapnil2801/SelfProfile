@@ -44,17 +44,17 @@ function ToolCard({ name, icon: Icon, category, index }) {
       initial={{ opacity: 0, y: 16 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ delay: index * 0.04, duration: 0.45, ease: 'easeOut' }}
-      className="card p-5 flex flex-col items-center group cursor-default"
+      className="glass p-5 flex flex-col items-center group cursor-default"
     >
       {/* Icon container */}
-      <div className="w-12 h-12 border border-neutral-200 flex items-center justify-center text-neutral-500 group-hover:text-neutral-900 group-hover:border-neutral-900 transition-colors duration-200">
-        <Icon size={22} />
+      <div className="w-12 h-12 rounded-md border border-slate-500/25 bg-void-800/60 flex items-center justify-center text-slate-400 group-hover:text-neon-cyan group-hover:border-neon-cyan/60 group-hover:shadow-glow-cyan transition-all duration-200">
+        <Icon size={22} aria-hidden="true" />
       </div>
       <div className="text-center pt-3">
-        <p className="text-sm font-medium text-neutral-700 group-hover:text-neutral-900 transition-colors">
+        <p className="text-sm font-medium text-slate-300 group-hover:text-slate-100 transition-colors">
           {name}
         </p>
-        <p className="text-xs text-neutral-400 mt-0.5">{category}</p>
+        <p className="text-xs text-slate-500 mt-0.5 font-mono">{category}</p>
       </div>
     </motion.div>
   )
@@ -64,7 +64,7 @@ export default function Tools() {
   const ref = useRef(null)
 
   return (
-    <section id="tools" className="py-28 bg-neutral-50 border-y border-neutral-200">
+    <section id="tools" className="py-28 border-y border-slate-500/10 bg-void-850/60">
       <div className="section-container" ref={ref}>
         <SectionTitle
           eyebrow="My Toolkit"

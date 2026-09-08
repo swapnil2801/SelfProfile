@@ -71,13 +71,19 @@ export default function Contact() {
     }
   }
 
-  const inputClass = `w-full px-4 py-3 text-sm text-neutral-900 placeholder-neutral-400
-    bg-white border border-neutral-200 outline-none transition-colors duration-200
-    focus:border-neutral-900`
+  const inputClass = `w-full px-4 py-3 text-sm text-slate-100 placeholder-slate-600 rounded-md
+    bg-void-800/70 border border-slate-500/25 outline-none transition-all duration-200
+    focus:border-neon-cyan/60 focus:shadow-glow-cyan`
 
   return (
-    <section id="contact" className="py-28 bg-neutral-50 border-t border-neutral-200">
-      <div className="section-container" ref={ref}>
+    <section id="contact" className="relative py-28 border-t border-slate-500/10 bg-void-850/60 overflow-hidden">
+      {/* Ambient glow */}
+      <div
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[50rem] h-64 bg-neon-cyan/5 blur-3xl rounded-full pointer-events-none"
+        aria-hidden="true"
+      />
+
+      <div className="section-container relative" ref={ref}>
         <SectionTitle
           eyebrow="Get In Touch"
           title="Contact Me"
@@ -92,9 +98,9 @@ export default function Contact() {
         >
           {/* Left – contact info */}
           <div className="space-y-6">
-            <div className="card p-6 bg-white">
-              <h3 className="font-serif text-xl text-neutral-900 mb-2">Let&apos;s Work Together</h3>
-              <p className="text-sm text-neutral-500 leading-relaxed mb-6">
+            <div className="glass glass-lumen p-6">
+              <h3 className="font-display font-semibold text-xl text-slate-100 mb-2">Let&apos;s Work Together</h3>
+              <p className="text-sm text-slate-400 leading-relaxed mb-6">
                 I&apos;m currently open to full-time roles and freelance projects in full-stack development,
                 cloud architecture, or DevOps engineering. Reach out and let&apos;s create something remarkable.
               </p>
@@ -104,12 +110,12 @@ export default function Contact() {
                 {contactLinks.map((link, i) => {
                   const inner = (
                     <>
-                      <div className="w-10 h-10 border border-neutral-200 flex items-center justify-center flex-shrink-0 text-neutral-600">
+                      <div className="w-10 h-10 rounded-md border border-slate-500/25 bg-void-800/60 flex items-center justify-center flex-shrink-0 text-neon-cyan/80">
                         {link.icon}
                       </div>
                       <div>
-                        <p className="text-xs text-neutral-400">{link.label}</p>
-                        <p className="text-sm font-semibold text-neutral-800">{link.value}</p>
+                        <p className="text-xs text-slate-500 font-mono">{link.label}</p>
+                        <p className="text-sm font-semibold text-slate-200">{link.value}</p>
                       </div>
                     </>
                   )
@@ -125,12 +131,12 @@ export default function Contact() {
                           href={link.href}
                           target={link.href.startsWith('http') ? '_blank' : undefined}
                           rel="noreferrer"
-                          className="flex items-center gap-4 p-3 border border-neutral-100 hover:border-neutral-900 transition-colors duration-200"
+                          className="focus-ring flex items-center gap-4 p-3 rounded-md border border-slate-500/15 hover:border-neon-cyan/50 hover:shadow-glow-soft transition-all duration-200"
                         >
                           {inner}
                         </a>
                       ) : (
-                        <div className="flex items-center gap-4 p-3 border border-neutral-100">
+                        <div className="flex items-center gap-4 p-3 rounded-md border border-slate-500/15">
                           {inner}
                         </div>
                       )}
@@ -152,7 +158,7 @@ export default function Contact() {
               transition={{ delay: 0.4, duration: 0.4 }}
               className="btn-solid w-full focus-ring"
             >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                   d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
@@ -165,7 +171,7 @@ export default function Contact() {
             initial={{ opacity: 0, y: 24 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.15, duration: 0.6, ease: 'easeOut' }}
-            className="card p-6 md:p-8 bg-white"
+            className="glass glass-lumen hud-corners p-6 md:p-8"
           >
             {sent ? (
               <motion.div
@@ -174,8 +180,8 @@ export default function Contact() {
                 className="h-full flex flex-col items-center justify-center text-center gap-4 py-12"
               >
                 <div className="text-5xl emoji-mono">🚀</div>
-                <h3 className="font-serif text-xl text-neutral-900">Message Sent!</h3>
-                <p className="text-neutral-500 text-sm max-w-xs">
+                <h3 className="font-display font-semibold text-xl text-slate-100">Message Sent!</h3>
+                <p className="text-slate-400 text-sm max-w-xs">
                   Thanks for reaching out. I&apos;ll get back to you within 24 hours.
                 </p>
                 <button
@@ -187,14 +193,18 @@ export default function Contact() {
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
-                <h3 className="font-serif text-lg text-neutral-900 mb-6">Send a Message</h3>
+                <h3 className="font-display font-semibold text-lg text-slate-100 mb-6">
+                  <span className="text-neon-cyan font-mono mr-2">&gt;_</span>
+                  Send a Message
+                </h3>
 
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs text-neutral-500 mb-1.5 font-mono">
-                      Name <span className="text-neutral-900">*</span>
+                    <label htmlFor="contact-name" className="block text-xs text-slate-500 mb-1.5 font-mono">
+                      Name <span className="text-neon-cyan">*</span>
                     </label>
                     <input
+                      id="contact-name"
                       type="text"
                       name="name"
                       value={form.name}
@@ -204,10 +214,11 @@ export default function Contact() {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs text-neutral-500 mb-1.5 font-mono">
-                      Email <span className="text-neutral-900">*</span>
+                    <label htmlFor="contact-email" className="block text-xs text-slate-500 mb-1.5 font-mono">
+                      Email <span className="text-neon-cyan">*</span>
                     </label>
                     <input
+                      id="contact-email"
                       type="email"
                       name="email"
                       value={form.email}
@@ -219,8 +230,9 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="block text-xs text-neutral-500 mb-1.5 font-mono">Subject</label>
+                  <label htmlFor="contact-subject" className="block text-xs text-slate-500 mb-1.5 font-mono">Subject</label>
                   <input
+                    id="contact-subject"
                     type="text"
                     name="subject"
                     value={form.subject}
@@ -231,10 +243,11 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="block text-xs text-neutral-500 mb-1.5 font-mono">
-                    Message <span className="text-neutral-900">*</span>
+                  <label htmlFor="contact-message" className="block text-xs text-slate-500 mb-1.5 font-mono">
+                    Message <span className="text-neon-cyan">*</span>
                   </label>
                   <textarea
+                    id="contact-message"
                     name="message"
                     value={form.message}
                     onChange={handleChange}
@@ -245,7 +258,7 @@ export default function Contact() {
                 </div>
 
                 {error && (
-                  <p className="text-neutral-900 text-xs font-mono border border-neutral-300 bg-neutral-50 px-3 py-2">{error}</p>
+                  <p role="alert" className="text-rose-300 text-xs font-mono border border-rose-500/30 bg-rose-500/10 rounded-md px-3 py-2">{error}</p>
                 )}
 
                 <button
@@ -255,7 +268,7 @@ export default function Contact() {
                 >
                   {sending ? (
                     <>
-                      <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24" aria-hidden="true">
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                       </svg>
@@ -263,7 +276,7 @@ export default function Contact() {
                     </>
                   ) : (
                     <>
-                      <FaPaperPlane size={13} />
+                      <FaPaperPlane size={13} aria-hidden="true" />
                       Send Message
                     </>
                   )}

@@ -3,7 +3,14 @@ import { motion, useInView } from 'framer-motion'
 import { skills } from '../../data/portfolioData'
 import SectionTitle from '../common/SectionTitle'
 
-function SkillBar({ name, level, index }) {
+const barAccents = {
+  pink: 'from-neon-magenta to-neon-violet',
+  blue: 'from-neon-cyan to-neon-blue',
+  purple: 'from-neon-violet to-neon-magenta',
+  cyan: 'from-neon-cyan to-neon-violet',
+}
+
+function SkillBar({ name, level, index, accent }) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true })
 
@@ -16,26 +23,27 @@ function SkillBar({ name, level, index }) {
       className="group"
     >
       <div className="flex justify-between items-center mb-1.5">
-        <span className="text-sm text-neutral-600 group-hover:text-neutral-900 transition-colors duration-200">
+        <span className="text-sm text-slate-400 group-hover:text-slate-100 transition-colors duration-200">
           {name}
         </span>
-        <span className="text-xs font-mono text-neutral-400">{level}%</span>
+        <span className="text-xs font-mono text-neon-cyan/60">{level}%</span>
       </div>
-      <div className="h-1 bg-neutral-100 overflow-hidden">
+      <div className="h-1 bg-slate-500/15 rounded-full overflow-hidden">
         <motion.div
           initial={{ width: 0 }}
           animate={inView ? { width: `${level}%` } : { width: 0 }}
           transition={{ delay: index * 0.06 + 0.2, duration: 0.9, ease: 'easeOut' }}
-          className="h-full bg-neutral-900"
+          className={`h-full rounded-full bg-gradient-to-r ${accent} shadow-glow-cyan`}
         />
       </div>
     </motion.div>
   )
 }
 
-function SkillCard({ category, icon, items, index }) {
+function SkillCard({ category, icon, items, index, color }) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-60px' })
+  const accent = barAccents[color] || barAccents.cyan
 
   return (
     <motion.div
@@ -43,23 +51,23 @@ function SkillCard({ category, icon, items, index }) {
       initial={{ opacity: 0, y: 24 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ delay: index * 0.1, duration: 0.5, ease: 'easeOut' }}
-      className="card p-6"
+      className="glass glass-lumen p-6"
     >
       {/* Card header */}
       <div className="flex items-center gap-3 mb-6">
-        <div className="w-10 h-10 border border-neutral-200 flex items-center justify-center text-sm emoji-mono">
+        <div className="w-10 h-10 rounded-md border border-slate-500/25 bg-void-800/60 flex items-center justify-center text-sm emoji-mono">
           {icon}
         </div>
         <div>
-          <h3 className="font-semibold text-neutral-900 text-sm">{category}</h3>
-          <p className="text-xs text-neutral-400">{items.length} technologies</p>
+          <h3 className="font-semibold text-slate-100 text-sm">{category}</h3>
+          <p className="text-xs text-slate-500 font-mono">{items.length} technologies</p>
         </div>
       </div>
 
       {/* Skill bars */}
       <div className="space-y-4">
         {items.map((item, i) => (
-          <SkillBar key={item.name} {...item} index={i} />
+          <SkillBar key={item.name} {...item} index={i} accent={accent} />
         ))}
       </div>
     </motion.div>
@@ -68,8 +76,14 @@ function SkillCard({ category, icon, items, index }) {
 
 export default function TechStack() {
   return (
-    <section id="skills" className="py-28 bg-white">
-      <div className="section-container">
+    <section id="skills" className="relative py-28 overflow-hidden">
+      {/* Ambient glow */}
+      <div
+        className="absolute bottom-0 right-0 w-[40rem] h-64 bg-neon-cyan/5 blur-3xl rounded-full pointer-events-none"
+        aria-hidden="true"
+      />
+
+      <div className="section-container relative">
         <SectionTitle
           eyebrow="My Arsenal"
           title="Tech Stack"

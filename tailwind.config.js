@@ -5,29 +5,40 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+        display: ['"Space Grotesk"', 'Inter', 'system-ui', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       colors: {
-        ink: {
-          950: '#0a0a0a',
-          900: '#111111',
-          800: '#1f1f1f',
-          700: '#333333',
-          600: '#4b4b4b',
-          500: '#6b6b6b',
-          400: '#8a8a8a',
-          300: '#b3b3b3',
-          200: '#d4d4d4',
-          100: '#e5e5e5',
-          50: '#f5f5f5',
+        void: {
+          950: '#04060d',
+          900: '#05070f',
+          850: '#080b16',
+          800: '#0a0e1a',
+          700: '#101527',
+          600: '#161d33',
         },
-        paper: '#ffffff',
-        'paper-alt': '#fafafa',
+        neon: {
+          cyan: '#22d3ee',
+          blue: '#38bdf8',
+          violet: '#a78bfa',
+          magenta: '#e879f9',
+          green: '#34d399',
+        },
+      },
+      boxShadow: {
+        'glow-cyan': '0 0 24px -6px rgba(34, 211, 238, 0.45)',
+        'glow-violet': '0 0 24px -6px rgba(167, 139, 250, 0.45)',
+        'glow-soft': '0 0 40px -12px rgba(34, 211, 238, 0.25)',
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-out',
         'fade-up': 'fadeUp 0.6s ease-out',
+        'orbit-slow': 'spin 28s linear infinite',
+        'orbit-slower': 'spin 45s linear infinite reverse',
+        'scanline': 'scanline 7s linear infinite',
+        'float-dot': 'floatDot 9s ease-in-out infinite',
+        'pulse-dot': 'pulseDot 2.2s ease-in-out infinite',
+        'ticker': 'ticker 1.2s steps(2) infinite',
       },
       keyframes: {
         fadeIn: {
@@ -37,6 +48,22 @@ export default {
         fadeUp: {
           '0%': { opacity: '0', transform: 'translateY(16px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        scanline: {
+          '0%': { transform: 'translateY(-100%)' },
+          '100%': { transform: 'translateY(100vh)' },
+        },
+        floatDot: {
+          '0%, 100%': { transform: 'translateY(0)', opacity: '0.35' },
+          '50%': { transform: 'translateY(-18px)', opacity: '0.9' },
+        },
+        pulseDot: {
+          '0%, 100%': { opacity: '1', boxShadow: '0 0 0 0 rgba(52, 211, 153, 0.5)' },
+          '50%': { opacity: '0.6', boxShadow: '0 0 0 5px rgba(52, 211, 153, 0)' },
+        },
+        ticker: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0' },
         },
       },
     },
