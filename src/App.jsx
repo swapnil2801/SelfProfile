@@ -9,6 +9,7 @@ import Footer from './components/Footer/Footer'
 // Sections
 import Hero from './components/Hero/Hero'
 import About from './components/About/About'
+import AiCreator from './components/AiCreator/AiCreator'
 import TechStack from './components/TechStack/TechStack'
 import Tools from './components/Tools/Tools'
 import Experience from './components/Experience/Experience'
@@ -36,6 +37,7 @@ export default function App() {
           <main>
             <Hero />
             <About />
+            <AiCreator />
             <TechStack />
             <Tools />
             <Experience />

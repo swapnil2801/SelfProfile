@@ -13,14 +13,14 @@ const stats = [
 
 const whoIAm = [
   'Backend engineer focused on Python, .NET Core & FastAPI',
-  'AI agent builder — LiteLLM, LangChain, multi-agent systems',
+  'AI agent builder — Hermes Agent, LiteLLM, multi-agent systems',
   '2+ years shipping production APIs and microservices',
 ]
 
 const whatIDo = [
+  'Orchestrate autonomous AI workflows with Hermes Agent',
   'Design & automate CI/CD pipelines on Azure DevOps',
   'Architect cloud infra on AWS & GCP with Linux at the core',
-  'Integrate LLMs into real-world products via agent frameworks',
 ]
 
 export default function About() {
@@ -130,7 +130,7 @@ export default function About() {
                   <span className="text-neutral-500">  role</span><span className="text-neutral-900">: </span><span className="text-neutral-700">'Backend · AI · DevOps'</span><span className="text-neutral-900">,</span>{'\n'}
                   <span className="text-neutral-500">  focus</span><span className="text-neutral-900">: [</span><span className="text-neutral-700">'AI Agents'</span><span className="text-neutral-900">, </span><span className="text-neutral-700">'Python'</span><span className="text-neutral-900">, </span><span className="text-neutral-700">'LLMs'</span><span className="text-neutral-900">],</span>{'\n'}
                   <span className="text-neutral-500">  infra</span><span className="text-neutral-900">: [</span><span className="text-neutral-700">'Linux'</span><span className="text-neutral-900">, </span><span className="text-neutral-700">'AWS'</span><span className="text-neutral-900">, </span><span className="text-neutral-700">'Azure DevOps'</span><span className="text-neutral-900">],</span>{'\n'}
-                  <span className="text-neutral-500">  aiTools</span><span className="text-neutral-900">: [</span><span className="text-neutral-700">'LiteLLM'</span><span className="text-neutral-900">, </span><span className="text-neutral-700">'Claude Code'</span><span className="text-neutral-900">],</span>{'\n'}
+                  <span className="text-neutral-500">  aiTools</span><span className="text-neutral-900">: [</span><span className="text-neutral-700">'Hermes Agent'</span><span className="text-neutral-900">, </span><span className="text-neutral-700">'LiteLLM'</span><span className="text-neutral-900">, </span><span className="text-neutral-700">'Claude Code'</span><span className="text-neutral-900">],</span>{'\n'}
                   <span className="text-neutral-500">  available</span><span className="text-neutral-900">: </span><span className="text-neutral-700">True</span>{'\n'}
                   <span className="text-neutral-900">{'}'}</span>
                 </code>
