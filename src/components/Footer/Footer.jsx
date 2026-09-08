@@ -4,6 +4,7 @@ import { personalInfo } from '../../data/portfolioData'
 
 const navLinks = [
   { label: 'About', to: 'about' },
+  { label: 'AI Creator', to: 'ai-creator' },
   { label: 'Skills', to: 'skills' },
   { label: 'Experience', to: 'experience' },
   { label: 'Projects', to: 'projects' },
@@ -23,11 +24,11 @@ export default function Footer() {
               </div>
               <div>
                 <p className="font-serif text-sm text-neutral-900">Swapnil Patil</p>
-                <p className="text-xs text-neutral-400">Full Stack Dev & DevOps</p>
+                <p className="text-xs text-neutral-400">Backend Engineer · AI Creator</p>
               </div>
             </div>
             <p className="text-xs text-neutral-500 leading-relaxed max-w-xs">
-              Building scalable web apps and cloud pipelines from Pune, India.
+              Building scalable backend systems and autonomous AI workflows from Pune, India.
               Always open to new opportunities and collaborations.
             </p>
           </div>
@@ -85,10 +86,11 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-neutral-400">
           <p>© {new Date().getFullYear()} Swapnil Patil. All rights reserved.</p>
-          <p>Built with React & Framer Motion</p>
+          <p>Built with React & Framer Motion — enhanced with Hermes Agent</p>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="text-neutral-400 hover:text-neutral-900 transition-colors"
+            className="focus-ring text-neutral-400 hover:text-neutral-900 transition-colors"
+            aria-label="Back to top"
           >
             Back to top &uarr;
           </button>

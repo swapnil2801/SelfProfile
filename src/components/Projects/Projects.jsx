@@ -57,28 +57,32 @@ function ProjectCard({ project, index }) {
             </span>
           ))}
         </div>
-        <div className="flex items-center gap-3 flex-shrink-0">
+        <div className="flex items-center gap-4 flex-shrink-0">
           {project.github && project.github !== '#' && (
             <a
               href={project.github}
               target="_blank"
               rel="noreferrer"
-              aria-label={`${project.title} on GitHub`}
-              className="text-neutral-400 hover:text-neutral-900 transition-colors"
+              aria-label={`${project.title} source code on GitHub`}
+              className="focus-ring inline-flex items-center gap-1.5 text-xs font-mono text-neutral-500 hover:text-neutral-900 transition-colors"
             >
-              <FaGithub size={18} />
+              <FaGithub size={15} aria-hidden="true" /> Code
             </a>
           )}
-          {project.live && project.live !== '#' && (
+          {project.live && project.live !== '#' ? (
             <a
               href={project.live}
               target="_blank"
               rel="noreferrer"
               aria-label={`${project.title} live site`}
-              className="text-neutral-400 hover:text-neutral-900 transition-colors"
+              className="focus-ring inline-flex items-center gap-1.5 text-xs font-mono text-neutral-500 hover:text-neutral-900 transition-colors"
             >
-              <FaExternalLinkAlt size={14} />
+              <FaExternalLinkAlt size={12} aria-hidden="true" /> Live
             </a>
+          ) : (
+            <span className="text-[0.65rem] font-mono text-neutral-300 uppercase tracking-wider cursor-default" title="No public deployment">
+              Source only
+            </span>
           )}
         </div>
       </div>

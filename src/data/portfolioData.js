@@ -4,15 +4,64 @@
 
 export const personalInfo = {
   name: 'Swapnil Patil',
-  title: 'Backend Engineer & AI / DevOps Specialist',
-  tagline: 'Building AI Agents · Cloud-Native Pipelines · Scalable Backend Systems',
+  title: 'Backend Engineer & AI / Automation Creator',
+  roles: ['Backend Engineer', 'AI & Automation Creator', 'Hermes Agent Power User'],
+  tagline: 'Scalable backend systems · Autonomous AI workflows · Local-first agent orchestration',
   location: 'Pune, India',
   email: 'sbpatil2801@gmail.com',
   github: 'https://github.com/swapnil2801',
   linkedin: 'https://www.linkedin.com/in/swapnil-patil-s28012001/',
   resume: '/Swapnil_Patil_Resume.pdf',
   bio: `Backend Engineer & AI enthusiast with 2+ years building production-grade APIs, intelligent agent systems, and cloud-native infrastructure — turning complex challenges into clean, scalable solutions.`,
-  bio2: `From multi-agent AI workflows with LiteLLM & Claude Code, to hardening Linux infrastructure and shipping CI/CD pipelines on Azure DevOps. I operate at the intersection of AI, backend, and DevOps.`,
+  bio2: `From multi-agent AI workflows with Hermes Agent, LiteLLM & Claude Code, to hardening Linux infrastructure and shipping CI/CD pipelines on Azure DevOps. I operate at the intersection of AI, backend, and DevOps.`,
+}
+
+// ============================================================
+// AI Creator — Hermes Agent workflow
+// ============================================================
+
+export const aiCreator = {
+  eyebrow: 'AI Creator',
+  title: 'Building with Hermes Agent',
+  subtitle:
+    'Practical, autonomous AI systems — not demos. How an open-source, local-first agent framework became the backbone of my daily engineering workflow.',
+  intro: `Hermes Agent is an open-source, local-first AI agent framework. I run it on my own Linux infrastructure as a small autonomous engineering team: a manager agent that breaks work down and routes tasks, and specialist agents (frontend, backend) that execute them end-to-end — cloning repos over SSH, writing code on feature branches, running builds, and reporting back with verifiable results.`,
+  intro2: `What makes it work isn't hype — it's plumbing. Each agent has real tool access (terminal, git, files, web), persistent memory, reusable skills, and scheduled jobs. I design the workflows, guardrails, and review gates; the agents handle the repetitive engineering loops. The result is a very practical kind of AI: fewer context switches, faster iteration, and an audit trail for everything the agents do.`,
+  capabilities: [
+    {
+      title: 'Multi-Agent Task Routing',
+      description:
+        'A manager agent decomposes work and delegates to specialist agents with isolated contexts, then consolidates their reports.',
+      icon: 'route',
+    },
+    {
+      title: 'Real Tool Use',
+      description:
+        'Agents operate a real shell: git over SSH, package managers, builds, test runs, file edits — with output verified, not assumed.',
+      icon: 'terminal',
+    },
+    {
+      title: 'Local-First & Open Source',
+      description:
+        'Runs on my own Linux machines. Code, credentials, and history stay on infrastructure I control — no black-box SaaS loop.',
+      icon: 'server',
+    },
+    {
+      title: 'Autonomous Workflows',
+      description:
+        'Cron-scheduled jobs, persistent memory, and skill libraries let recurring engineering chores run without me in the loop.',
+      icon: 'loop',
+    },
+  ],
+  workflow: [
+    { step: '01', label: 'Brief', detail: 'I write the task: goal, constraints, acceptance criteria' },
+    { step: '02', label: 'Route', detail: 'Manager agent splits work and assigns specialists' },
+    { step: '03', label: 'Execute', detail: 'Agents branch, code, build, and test in real terminals' },
+    { step: '04', label: 'Verify', detail: 'Builds must pass; results reported with real output' },
+    { step: '05', label: 'Review', detail: 'I review the diff and merge — humans keep the keys' },
+  ],
+  stack: ['Hermes Agent', 'Claude / LLM APIs', 'LiteLLM', 'Python', 'Linux', 'Git + SSH', 'Cron Automation', 'FastAPI'],
+  disclaimer: null,
 }
 
 export const skills = [
@@ -108,8 +157,8 @@ export const projects = [
       'An intelligent multi-agent simulator that models real-world system design scenarios using LLMs. Accepts architecture prompts and autonomously generates design documents, trade-off analyses, capacity estimations, and infrastructure diagrams — powered by Python AI agents and LiteLLM.',
     tech: ['Python', 'LiteLLM', 'AI Agents', 'FastAPI', 'React', 'LangChain'],
     category: 'AI / Agents',
-    github: 'https://github.com/swapnilpatil/AI-System-Design-Simulator',
-    live: '#',
+    github: 'https://github.com/swapnil2801/AI-System-Design-Simulator',
+    live: null,
     gradient: 'from-purple-500 to-pink-500',
     features: ['Multi-agent orchestration', 'LLM-powered design', 'Trade-off analysis', 'Auto diagrams'],
     status: 'Open Source',
@@ -122,8 +171,8 @@ export const projects = [
       'A full-stack OCR (Optical Character Recognition) web application built with React and Python. Supports image/PDF uploads, extracts text using computer vision models, and provides structured output with confidence scores. Includes a clean React UI with real-time processing feedback.',
     tech: ['React', 'Python', 'FastAPI', 'OpenCV', 'Tesseract', 'AWS S3'],
     category: 'Full Stack + AI / Vision',
-    github: 'https://github.com/swapnilpatil/OCRProjectReact',
-    live: '#',
+    github: 'https://github.com/swapnil2801/OCRProjectReact',
+    live: null,
     gradient: 'from-cyan-500 to-blue-500',
     features: ['Image / PDF OCR', 'Confidence scores', 'Real-time UI', 'S3 storage'],
     status: 'Open Source',
