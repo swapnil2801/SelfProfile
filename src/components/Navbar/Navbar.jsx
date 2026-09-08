@@ -31,26 +31,36 @@ export default function Navbar() {
       transition={{ duration: 0.5, delay: 0.1, ease: 'easeOut' }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'py-3 bg-white/90 backdrop-blur-md border-b border-neutral-200'
+          ? 'py-3 bg-void-900/85 backdrop-blur-xl border-b border-slate-500/15 shadow-glow-soft'
           : 'py-5 bg-transparent'
       }`}
     >
+      {/* Luminous bottom edge when scrolled */}
+      {scrolled && (
+        <div
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 h-px w-2/3 bg-gradient-to-r from-transparent via-neon-cyan/50 to-transparent"
+          aria-hidden="true"
+        />
+      )}
+
       <nav className="section-container flex items-center justify-between">
         {/* Logo */}
         <Link to="hero" smooth duration={600} className="cursor-pointer">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 border border-neutral-900 bg-neutral-900 text-white flex items-center justify-center font-serif text-sm font-semibold">
+          <div className="flex items-center gap-3 group">
+            <div className="relative w-9 h-9 rounded-md border border-neon-cyan/50 bg-void-800 text-neon-cyan flex items-center justify-center font-display text-sm font-bold shadow-glow-cyan">
               SP
             </div>
-            <span className="font-serif text-sm text-neutral-900 tracking-wide hidden sm:block">
+            <span className="font-display text-sm text-slate-200 tracking-wide hidden sm:flex items-center gap-2">
               Swapnil Patil
+              <span className="led" aria-hidden="true" />
+              <span className="text-[0.55rem] font-mono text-neon-green/80 tracking-[0.2em] uppercase">online</span>
             </span>
           </div>
         </Link>
 
         {/* Desktop nav links */}
         <ul className="hidden md:flex items-center gap-1">
-          {navLinks.map((link) => (
+          {navLinks.map((link, i) => (
             <li key={link.to}>
               <Link
                 to={link.to}
@@ -58,18 +68,21 @@ export default function Navbar() {
                 duration={600}
                 spy
                 onSetActive={() => setActiveSection(link.to)}
-                className={`relative px-4 py-2 text-sm cursor-pointer transition-colors duration-200 block
+                className={`relative px-3.5 py-2 text-sm cursor-pointer transition-colors duration-200 block font-medium
                   ${activeSection === link.to
-                    ? 'text-neutral-900 font-semibold'
-                    : 'text-neutral-500 hover:text-neutral-900'
+                    ? 'text-neon-cyan'
+                    : 'text-slate-400 hover:text-slate-100'
                   }`}
               >
+                <span className="relative font-mono text-[0.6rem] text-slate-600 mr-1.5 align-middle">
+                  0{i + 1}
+                </span>
                 <span className="relative">
                   {link.label}
                   {activeSection === link.to && (
                     <motion.span
                       layoutId="nav-underline"
-                      className="absolute -bottom-1 left-0 right-0 h-px bg-neutral-900"
+                      className="absolute -bottom-1 left-0 right-0 h-px bg-gradient-to-r from-neon-cyan to-neon-violet shadow-glow-cyan"
                       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                     />
                   )}
@@ -86,9 +99,9 @@ export default function Navbar() {
             download="Swapnil_Patil_Resume.pdf"
             target="_blank"
             rel="noreferrer"
-            className="hidden md:inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold bg-neutral-900 text-white border border-neutral-900 hover:bg-neutral-700 hover:border-neutral-700 transition-colors duration-200"
+            className="hidden md:inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded-md border border-neon-cyan/40 bg-neon-cyan/10 text-cyan-100 hover:border-neon-cyan/80 hover:shadow-glow-cyan transition-all duration-200 focus-ring"
           >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
             Resume
@@ -97,20 +110,21 @@ export default function Navbar() {
           {/* Mobile menu button */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden relative w-10 h-10 flex flex-col justify-center items-center gap-1.5"
+            className="md:hidden relative w-10 h-10 flex flex-col justify-center items-center gap-1.5 focus-ring"
             aria-label="Toggle menu"
+            aria-expanded={mobileOpen}
           >
             <motion.span
               animate={{ rotate: mobileOpen ? 45 : 0, y: mobileOpen ? 7 : 0 }}
-              className="block w-6 h-0.5 bg-neutral-900 origin-center"
+              className="block w-6 h-0.5 bg-neon-cyan origin-center"
             />
             <motion.span
               animate={{ opacity: mobileOpen ? 0 : 1 }}
-              className="block w-6 h-0.5 bg-neutral-900"
+              className="block w-6 h-0.5 bg-slate-300"
             />
             <motion.span
               animate={{ rotate: mobileOpen ? -45 : 0, y: mobileOpen ? -7 : 0 }}
-              className="block w-6 h-0.5 bg-neutral-900 origin-center"
+              className="block w-6 h-0.5 bg-neon-violet origin-center"
             />
           </button>
         </div>
@@ -124,7 +138,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="md:hidden overflow-hidden bg-white border-b border-neutral-200"
+            className="md:hidden overflow-hidden bg-void-900/95 backdrop-blur-xl border-b border-slate-500/20"
           >
             <ul className="section-container py-4 flex flex-col gap-1">
               {navLinks.map((link, i) => (
@@ -139,9 +153,9 @@ export default function Navbar() {
                     smooth
                     duration={600}
                     onClick={() => setMobileOpen(false)}
-                    className="block px-4 py-3 text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50 transition-colors duration-200 cursor-pointer text-sm font-medium"
+                    className="block px-4 py-3 text-slate-400 hover:text-neon-cyan hover:bg-neon-cyan/5 rounded-md transition-colors duration-200 cursor-pointer text-sm font-medium"
                   >
-                    <span className="text-neutral-300 font-mono mr-2">
+                    <span className="text-neon-cyan/50 font-mono mr-2">
                       {String(i + 1).padStart(2, '0')}.
                     </span>
                     {link.label}
@@ -152,12 +166,12 @@ export default function Navbar() {
                 initial={{ opacity: 0, x: -12 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.25 }}
-                className="mt-2 pt-2 border-t border-neutral-100"
+                className="mt-2 pt-2 border-t border-slate-500/15"
               >
                 <a
                   href={personalInfo.resume}
                   download
-                  className="block px-4 py-3 text-neutral-900 font-semibold text-sm"
+                  className="block px-4 py-3 text-neon-cyan font-semibold text-sm"
                   onClick={() => setMobileOpen(false)}
                 >
                   ↓ Download Resume

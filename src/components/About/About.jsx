@@ -33,7 +33,7 @@ export default function About() {
   }
 
   return (
-    <section id="about" className="py-24 bg-neutral-50 border-y border-neutral-200">
+    <section id="about" className="relative py-24 border-y border-slate-500/10 bg-void-850/60">
       <div className="section-container" ref={ref}>
         <SectionTitle
           eyebrow="Get to Know Me"
@@ -50,18 +50,18 @@ export default function About() {
           {/* LEFT */}
           <div className="flex flex-col gap-5">
             {/* Who I Am */}
-            <motion.div variants={card} className="card p-6 bg-white">
+            <motion.div variants={card} className="glass glass-lumen p-6">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-9 h-9 border border-neutral-200 flex items-center justify-center text-lg flex-shrink-0 emoji-mono">
+                <div className="w-9 h-9 rounded-md border border-neon-cyan/30 bg-neon-cyan/5 flex items-center justify-center text-lg flex-shrink-0 emoji-mono">
                   👨‍💻
                 </div>
-                <h3 className="font-semibold text-neutral-900 text-sm tracking-wide uppercase">Who I Am</h3>
+                <h3 className="font-semibold text-slate-100 text-sm tracking-[0.15em] uppercase font-mono">Who I Am</h3>
               </div>
-              <p className="text-neutral-600 text-sm leading-relaxed mb-4">{personalInfo.bio}</p>
+              <p className="text-slate-400 text-sm leading-relaxed mb-4">{personalInfo.bio}</p>
               <ul className="space-y-2">
                 {whoIAm.map((item) => (
-                  <li key={item} className="flex items-start gap-2 text-xs text-neutral-500">
-                    <FaCheckCircle size={11} className="text-neutral-400 flex-shrink-0 mt-0.5" />
+                  <li key={item} className="flex items-start gap-2 text-xs text-slate-500">
+                    <FaCheckCircle size={11} className="text-neon-cyan/70 flex-shrink-0 mt-0.5" aria-hidden="true" />
                     {item}
                   </li>
                 ))}
@@ -69,18 +69,18 @@ export default function About() {
             </motion.div>
 
             {/* What I Do */}
-            <motion.div variants={card} className="card p-6 bg-white">
+            <motion.div variants={card} className="glass glass-lumen p-6">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-9 h-9 border border-neutral-200 flex items-center justify-center text-lg flex-shrink-0 emoji-mono">
+                <div className="w-9 h-9 rounded-md border border-neon-violet/30 bg-neon-violet/5 flex items-center justify-center text-lg flex-shrink-0 emoji-mono">
                   🎯
                 </div>
-                <h3 className="font-semibold text-neutral-900 text-sm tracking-wide uppercase">What I Do</h3>
+                <h3 className="font-semibold text-slate-100 text-sm tracking-[0.15em] uppercase font-mono">What I Do</h3>
               </div>
-              <p className="text-neutral-600 text-sm leading-relaxed mb-4">{personalInfo.bio2}</p>
+              <p className="text-slate-400 text-sm leading-relaxed mb-4">{personalInfo.bio2}</p>
               <ul className="space-y-2">
                 {whatIDo.map((item) => (
-                  <li key={item} className="flex items-start gap-2 text-xs text-neutral-500">
-                    <FaCheckCircle size={11} className="text-neutral-400 flex-shrink-0 mt-0.5" />
+                  <li key={item} className="flex items-start gap-2 text-xs text-slate-500">
+                    <FaCheckCircle size={11} className="text-neon-violet/70 flex-shrink-0 mt-0.5" aria-hidden="true" />
                     {item}
                   </li>
                 ))}
@@ -90,7 +90,7 @@ export default function About() {
             {/* Chips */}
             <motion.div variants={card} className="flex flex-wrap gap-3">
               <div className="chip flex items-center gap-2 font-mono">
-                <FaMapMarkerAlt size={11} /> {personalInfo.location}
+                <FaMapMarkerAlt size={11} aria-hidden="true" /> {personalInfo.location}
               </div>
               <div className="chip flex items-center gap-2 font-mono">
                 <span className="emoji-mono">💼</span> Arieotech Solutions
@@ -105,34 +105,34 @@ export default function About() {
               {stats.map((stat, i) => (
                 <div
                   key={i}
-                  className="card p-5 text-center bg-white cursor-default"
+                  className="glass p-5 text-center cursor-default"
                 >
-                  <div className="w-8 h-8 border border-neutral-200 flex items-center justify-center mx-auto mb-3 text-neutral-700">
+                  <div className="w-8 h-8 rounded-md border border-slate-500/25 flex items-center justify-center mx-auto mb-3 text-neon-cyan">
                     {stat.icon}
                   </div>
-                  <div className="text-2xl font-serif text-neutral-900">{stat.value}</div>
-                  <div className="text-xs text-neutral-500 mt-1">{stat.label}</div>
+                  <div className="text-2xl font-display font-semibold text-gradient">{stat.value}</div>
+                  <div className="text-xs text-slate-500 mt-1">{stat.label}</div>
                 </div>
               ))}
             </motion.div>
 
             {/* Compact terminal */}
-            <motion.div variants={card} className="card bg-white overflow-hidden">
-              <div className="flex items-center gap-2 px-4 py-2.5 border-b border-neutral-200 bg-neutral-50">
-                <div className="w-2.5 h-2.5 rounded-full border border-neutral-300" />
-                <div className="w-2.5 h-2.5 rounded-full border border-neutral-300" />
-                <div className="w-2.5 h-2.5 rounded-full border border-neutral-300" />
-                <span className="ml-2 text-xs font-mono text-neutral-500">swapnil.config.py</span>
+            <motion.div variants={card} className="terminal-frame hud-corners">
+              <div className="terminal-header">
+                <span className="terminal-dot bg-rose-500/70" />
+                <span className="terminal-dot bg-amber-400/70" />
+                <span className="terminal-dot bg-emerald-400/70" />
+                <span className="ml-2 text-xs font-mono text-slate-400">swapnil.config.py</span>
               </div>
-              <pre className="p-4 text-xs font-mono leading-6 overflow-x-auto text-neutral-700">
+              <pre className="p-4 text-xs font-mono leading-6 overflow-x-auto text-slate-300">
                 <code>
-                  <span className="text-neutral-500">swapnil</span><span className="text-neutral-900"> = {'{'}</span>{'\n'}
-                  <span className="text-neutral-500">  role</span><span className="text-neutral-900">: </span><span className="text-neutral-700">'Backend · AI · DevOps'</span><span className="text-neutral-900">,</span>{'\n'}
-                  <span className="text-neutral-500">  focus</span><span className="text-neutral-900">: [</span><span className="text-neutral-700">'AI Agents'</span><span className="text-neutral-900">, </span><span className="text-neutral-700">'Python'</span><span className="text-neutral-900">, </span><span className="text-neutral-700">'LLMs'</span><span className="text-neutral-900">],</span>{'\n'}
-                  <span className="text-neutral-500">  infra</span><span className="text-neutral-900">: [</span><span className="text-neutral-700">'Linux'</span><span className="text-neutral-900">, </span><span className="text-neutral-700">'AWS'</span><span className="text-neutral-900">, </span><span className="text-neutral-700">'Azure DevOps'</span><span className="text-neutral-900">],</span>{'\n'}
-                  <span className="text-neutral-500">  aiTools</span><span className="text-neutral-900">: [</span><span className="text-neutral-700">'Hermes Agent'</span><span className="text-neutral-900">, </span><span className="text-neutral-700">'LiteLLM'</span><span className="text-neutral-900">, </span><span className="text-neutral-700">'Claude Code'</span><span className="text-neutral-900">],</span>{'\n'}
-                  <span className="text-neutral-500">  available</span><span className="text-neutral-900">: </span><span className="text-neutral-700">True</span>{'\n'}
-                  <span className="text-neutral-900">{'}'}</span>
+                  <span className="text-neon-violet">swapnil</span><span className="text-slate-400"> = {'{'}</span>{'\n'}
+                  <span className="text-neon-cyan">  role</span><span className="text-slate-400">: </span><span className="text-emerald-300">'Backend · AI · DevOps'</span><span className="text-slate-400">,</span>{'\n'}
+                  <span className="text-neon-cyan">  focus</span><span className="text-slate-400">: [</span><span className="text-emerald-300">'AI Agents'</span><span className="text-slate-400">, </span><span className="text-emerald-300">'Python'</span><span className="text-slate-400">, </span><span className="text-emerald-300">'LLMs'</span><span className="text-slate-400">],</span>{'\n'}
+                  <span className="text-neon-cyan">  infra</span><span className="text-slate-400">: [</span><span className="text-emerald-300">'Linux'</span><span className="text-slate-400">, </span><span className="text-emerald-300">'AWS'</span><span className="text-slate-400">, </span><span className="text-emerald-300">'Azure DevOps'</span><span className="text-slate-400">],</span>{'\n'}
+                  <span className="text-neon-cyan">  aiTools</span><span className="text-slate-400">: [</span><span className="text-emerald-300">'Hermes Agent'</span><span className="text-slate-400">, </span><span className="text-emerald-300">'LiteLLM'</span><span className="text-slate-400">, </span><span className="text-emerald-300">'Claude Code'</span><span className="text-slate-400">],</span>{'\n'}
+                  <span className="text-neon-cyan">  available</span><span className="text-slate-400">: </span><span className="text-neon-magenta">True</span>{'\n'}
+                  <span className="text-slate-400">{'}'}</span>
                 </code>
               </pre>
             </motion.div>
