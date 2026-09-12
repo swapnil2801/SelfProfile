@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
+import { FaGithub, FaLinkedin, FaEnvelope, FaTelegramPlane, FaInstagram } from 'react-icons/fa'
 import { Link } from 'react-scroll'
 import { personalInfo } from '../../data/portfolioData'
 
@@ -6,7 +6,7 @@ const navLinks = [
   { label: 'About', to: 'about' },
   { label: 'Experience', to: 'experience' },
   { label: 'AI Creator', to: 'ai-creator' },
-  { label: 'Projects', to: 'projects' },
+  { label: 'Creator Signal', to: 'creator' },
   { label: 'Skills', to: 'skills' },
   { label: 'Contact', to: 'contact' },
 ]
@@ -30,7 +30,7 @@ export default function Footer() {
               </div>
               <div>
                 <p className="font-display font-semibold text-sm text-slate-100">Swapnil Patil</p>
-                <p className="text-xs text-slate-500">Backend Engineer · AI Creator</p>
+                <p className="text-xs text-slate-500">Backend Engineer · AI Content & Engineering Creator</p>
               </div>
             </div>
             <p className="text-xs text-slate-500 leading-relaxed max-w-xs">
@@ -69,6 +69,8 @@ export default function Footer() {
               {[
                 { href: personalInfo.github, icon: <FaGithub size={18} />, label: 'GitHub' },
                 { href: personalInfo.linkedin, icon: <FaLinkedin size={18} />, label: 'LinkedIn' },
+                { href: personalInfo.telegram.url, icon: <FaTelegramPlane size={17} />, label: 'Telegram — @TECHNOLOGIA2801' },
+                { href: personalInfo.instagram.url, icon: <FaInstagram size={17} />, label: 'Instagram — @technologgia.ai' },
                 { href: `mailto:${personalInfo.email}`, icon: <FaEnvelope size={16} />, label: 'Email' },
               ].map(({ href, icon, label }) => (
                 <a

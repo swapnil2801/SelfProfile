@@ -15,14 +15,15 @@ const stats = [
 
 const whoIAm = [
   'Backend engineer focused on Python, .NET Core & FastAPI',
-  'AI agent builder — Hermes Agent, LiteLLM, multi-agent systems',
+  'AI agent builder — Hermes Agent, OpenClaw, LiteLLM, Paperclip',
+  'AI content & engineering creator — TECHNOLOGIA on Telegram & Instagram',
   '2+ years shipping production APIs and microservices',
 ]
 
 const whatIDo = [
   'Orchestrate autonomous AI workflows with Hermes Agent',
   'Design & automate CI/CD pipelines on Azure DevOps',
-  'Architect cloud infra on AWS & GCP with Linux at the core',
+  'Architect cloud infra on AWS, Azure, GCP & IONOS with Linux at the core',
 ]
 
 export default function About() {
@@ -133,8 +134,9 @@ export default function About() {
                   <span className="text-neon-violet">swapnil</span><span className="text-slate-400"> = {'{'}</span>{'\n'}
                   <span className="text-neon-cyan">  role</span><span className="text-slate-400">: </span><span className="text-emerald-300">'Backend · AI · DevOps'</span><span className="text-slate-400">,</span>{'\n'}
                   <span className="text-neon-cyan">  focus</span><span className="text-slate-400">: [</span><span className="text-emerald-300">'AI Agents'</span><span className="text-slate-400">, </span><span className="text-emerald-300">'Python'</span><span className="text-slate-400">, </span><span className="text-emerald-300">'LLMs'</span><span className="text-slate-400">],</span>{'\n'}
-                  <span className="text-neon-cyan">  infra</span><span className="text-slate-400">: [</span><span className="text-emerald-300">'Linux'</span><span className="text-slate-400">, </span><span className="text-emerald-300">'AWS'</span><span className="text-slate-400">, </span><span className="text-emerald-300">'Azure DevOps'</span><span className="text-slate-400">],</span>{'\n'}
-                  <span className="text-neon-cyan">  aiTools</span><span className="text-slate-400">: [</span><span className="text-emerald-300">'Hermes Agent'</span><span className="text-slate-400">, </span><span className="text-emerald-300">'LiteLLM'</span><span className="text-slate-400">, </span><span className="text-emerald-300">'Claude Code'</span><span className="text-slate-400">],</span>{'\n'}
+                  <span className="text-neon-cyan">  infra</span><span className="text-slate-400">: [</span><span className="text-emerald-300">'Linux'</span><span className="text-slate-400">, </span><span className="text-emerald-300">'AWS'</span><span className="text-slate-400">, </span><span className="text-emerald-300">'Azure'</span><span className="text-slate-400">, </span><span className="text-emerald-300">'GCP'</span><span className="text-slate-400">, </span><span className="text-emerald-300">'IONOS'</span><span className="text-slate-400">],</span>{'\n'}
+                  <span className="text-neon-cyan">  aiTools</span><span className="text-slate-400">: [</span><span className="text-emerald-300">'Hermes Agent'</span><span className="text-slate-400">, </span><span className="text-emerald-300">'OpenClaw'</span><span className="text-slate-400">, </span><span className="text-emerald-300">'LiteLLM'</span><span className="text-slate-400">, </span><span className="text-emerald-300">'Paperclip'</span><span className="text-slate-400">],</span>{'\n'}
+                  <span className="text-neon-cyan">  channels</span><span className="text-slate-400">: [</span><span className="text-emerald-300">'@TECHNOLOGIA2801'</span><span className="text-slate-400">, </span><span className="text-emerald-300">'@technologgia.ai'</span><span className="text-slate-400">],</span>{'\n'}
                   <span className="text-neon-cyan">  available</span><span className="text-slate-400">: </span><span className="text-neon-magenta">True</span>{'\n'}
                   <span className="text-slate-400">{'}'}</span>
                 </code>

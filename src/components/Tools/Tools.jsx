@@ -2,7 +2,7 @@ import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import {
   FaAws, FaDocker, FaGit, FaGithub, FaLinux, FaJenkins,
-  FaMicrosoft, FaCode, FaRobot, FaPaperclip, FaBolt, FaFeatherAlt,
+  FaMicrosoft, FaCode, FaRobot, FaPaperclip, FaBolt, FaFeatherAlt, FaCloud,
 } from 'react-icons/fa'
 import {
   SiGooglecloud, SiKubernetes, SiPostman, SiJira, SiGrafana, SiOpenai, SiPython,
@@ -11,17 +11,19 @@ import SectionTitle from '../common/SectionTitle'
 
 const toolData = [
   // AI Tools (shown first — recent focus)
-  { name: 'Claude Code', icon: FaRobot, category: 'AI Dev' },
   { name: 'Hermes Agent', icon: FaFeatherAlt, category: 'AI Agent' },
-  { name: 'OpenClaw', icon: SiOpenai, category: 'AI' },
+  { name: 'OpenClaw', icon: SiOpenai, category: 'AI Agent' },
   { name: 'LiteLLM', icon: FaBolt, category: 'LLM Proxy' },
-  { name: 'PaperClip', icon: FaPaperclip, category: 'AI Agent' },
+  { name: 'Paperclip', icon: FaPaperclip, category: 'AI Agent' },
+  { name: 'Claude Code', icon: FaRobot, category: 'AI Dev' },
   { name: 'Grafana', icon: SiGrafana, category: 'Monitoring' },
   { name: 'Python', icon: SiPython, category: 'Language' },
   // DevOps / Cloud
-  { name: 'Azure DevOps', icon: FaMicrosoft, category: 'DevOps' },
   { name: 'AWS', icon: FaAws, category: 'Cloud' },
+  { name: 'Azure', icon: FaMicrosoft, category: 'Cloud' },
+  { name: 'Azure DevOps', icon: FaMicrosoft, category: 'DevOps' },
   { name: 'GCP', icon: SiGooglecloud, category: 'Cloud' },
+  { name: 'IONOS', icon: FaCloud, category: 'Cloud' },
   { name: 'Docker', icon: FaDocker, category: 'Containers' },
   { name: 'Kubernetes', icon: SiKubernetes, category: 'Orchestration' },
   { name: 'Jenkins', icon: FaJenkins, category: 'CI/CD' },

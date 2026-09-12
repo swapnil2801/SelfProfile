@@ -8,7 +8,7 @@ const navLinks = [
   { label: 'About', to: 'about' },
   { label: 'Experience', to: 'experience' },
   { label: 'AI Creator', to: 'ai-creator' },
-  { label: 'Projects', to: 'projects' },
+  { label: 'Creator Signal', to: 'creator' },
   { label: 'Skills', to: 'skills' },
   { label: 'Contact', to: 'contact' },
 ]

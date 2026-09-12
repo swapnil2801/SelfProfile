@@ -34,7 +34,7 @@ const check = (name, ok, detail = '') => {
 
 console.log('\n[1] Cinematic scroll choreography (App.jsx section order)')
 const app = read('src/App.jsx')
-const order = ['<Hero', '<About', '<Experience', '<AiCreator', '<Projects', '<TechStack', '<Tools', '<Achievements', '<Contact']
+const order = ['<Hero', '<About', '<Experience', '<AiCreator', '<CreatorSignal', '<TechStack', '<Tools', '<Achievements', '<Contact']
 let lastIdx = -1
 let ordered = true
 for (const tag of order) {
@@ -45,10 +45,23 @@ for (const tag of order) {
   }
   lastIdx = idx
 }
-check('sections render in Hero→About→Experience→AI Creator→Projects→Tech/Tools→Achievements→Contact order', ordered)
+check('sections render in Hero→About→Experience→AI Creator→Creator Signal→Tech/Tools→Achievements→Contact order', ordered)
 check('SignalField mounted', app.includes('<SignalField'))
 check('CursorLight mounted', app.includes('<CursorLight'))
 check('SignalDivider transitions present', (app.match(/<SignalDivider/g) || []).length >= 6)
+
+console.log('\n[1b] Projects fully removed from the experience')
+check('App.jsx does not import Projects component', !app.includes('components/Projects'))
+check('App.jsx does not render <Projects', !app.includes('<Projects ') && !app.includes('<Projects/') && !app.includes('<Projects>'))
+check('Projects component file deleted', !existsSync(join(root, 'src/components/Projects/Projects.jsx')))
+const navbarSrc = read('src/components/Navbar/Navbar.jsx')
+const footerSrc = read('src/components/Footer/Footer.jsx')
+const heroSrc = read('src/components/Hero/Hero.jsx')
+check('navbar has no projects link', !navbarSrc.includes("'projects'"))
+check('footer has no projects link', !footerSrc.includes("'projects'"))
+check("hero has no dead scroll target to 'projects'", !heroSrc.includes('to="projects"'))
+check('navbar links to creator section instead', navbarSrc.includes("'creator'"))
+check('footer links to creator section instead', footerSrc.includes("'creator'"))
 
 console.log('\n[2] FX components')
 for (const f of ['SignalField.jsx', 'CursorLight.jsx', 'SignalDivider.jsx', 'CountUp.jsx', 'motion.js']) {
@@ -94,9 +107,34 @@ check('Achievements metrics come from data (CountUp value={data.metric})', ach.i
 const about = read('src/components/About/About.jsx')
 check('About stats use CountUp on existing values', about.includes('<CountUp value={stat.value}'))
 
+console.log('\n[4b] Required stack names visible (AI + cloud)')
+const toolsSrc = read('src/components/Tools/Tools.jsx')
+for (const ai of ['Hermes Agent', 'OpenClaw', 'LiteLLM', 'Paperclip']) {
+  check(`AI stack includes '${ai}' in data`, data.includes(ai))
+  check(`AI stack includes '${ai}' in Tools grid`, toolsSrc.includes(`'${ai}'`))
+}
+for (const cloud of ['AWS', 'Azure', 'GCP', 'IONOS']) {
+  check(`cloud stack includes '${cloud}' in data`, data.includes(`'${cloud}'`))
+  check(`cloud stack includes '${cloud}' in Tools grid`, toolsSrc.includes(`'${cloud}'`))
+}
+check("skills data keeps Azure DevOps as separate capability", data.includes("'Azure DevOps'"))
+
+console.log('\n[4c] Creator identity — social IDs & verified links')
+const creatorSrc = read('src/components/CreatorSignal/CreatorSignal.jsx')
+check('data has Telegram handle @TECHNOLOGIA2801', data.includes("'@TECHNOLOGIA2801'"))
+check('data has Instagram handle @technologgia.ai', data.includes("'@technologgia.ai'"))
+check('data has verified Telegram URL', data.includes("'https://t.me/TECHNOLOGIA2801'"))
+check('data has verified Instagram URL', data.includes("'https://www.instagram.com/technologgia.ai/'"))
+check('CreatorSignal section has id="creator"', creatorSrc.includes('id="creator"'))
+check('CreatorSignal channels open in new tab safely', creatorSrc.includes('target="_blank"') && creatorSrc.includes('rel="noreferrer"'))
+check('CreatorSignal respects reduced motion', creatorSrc.includes('useReducedMotion'))
+check('no invented follower/metric claims in creator data', !/followers|subscribers|\d+[kK]\+/.test(data.slice(data.indexOf('creatorSignal'), data.indexOf('export const skills'))))
+check('hero links Telegram + Instagram', heroSrc.includes('personalInfo.telegram.url') && heroSrc.includes('personalInfo.instagram.url'))
+check('footer links Telegram + Instagram', footerSrc.includes('personalInfo.telegram.url') && footerSrc.includes('personalInfo.instagram.url'))
+
 console.log('\n[5] Navigation, resume & contact links')
 const navbar = read('src/components/Navbar/Navbar.jsx')
-for (const target of ['hero', 'about', 'experience', 'ai-creator', 'projects', 'skills', 'contact']) {
+for (const target of ['hero', 'about', 'experience', 'ai-creator', 'creator', 'skills', 'contact']) {
   check(`navbar links to '${target}'`, navbar.includes(`'${target}'`))
 }
 check('navbar resume download intact', navbar.includes('Swapnil_Patil_Resume.pdf'))
@@ -128,6 +166,13 @@ if (distOk) {
     check('bundle embeds portfolio name', js.includes('Swapnil Patil'))
     check('bundle embeds signal-static fallback class', js.includes('signal-static-fallback'))
     check('bundle embeds canvas field logic', js.includes('signal-field') || js.includes('data-testid'))
+    for (const name of ['Hermes Agent', 'OpenClaw', 'LiteLLM', 'Paperclip', 'IONOS']) {
+      check(`bundle embeds '${name}'`, js.includes(name))
+    }
+    check('bundle embeds Telegram handle + URL', js.includes('@TECHNOLOGIA2801') && js.includes('https://t.me/TECHNOLOGIA2801'))
+    check('bundle embeds Instagram handle + URL', js.includes('@technologgia.ai') && js.includes('https://www.instagram.com/technologgia.ai/'))
+    check('bundle keeps GitHub + LinkedIn links', js.includes('https://github.com/swapnil2801') && js.includes('linkedin.com/in/swapnil-patil-s28012001'))
+    check('bundle does not render Projects section', !js.includes('AI System Design Simulator') && !js.includes('OCR Project'))
   }
   if (cssFile) {
     const distCss = read(join('dist', 'assets', cssFile))
