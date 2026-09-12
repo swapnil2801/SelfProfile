@@ -2,7 +2,7 @@ import { useRef } from 'react'
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
 import { TypeAnimation } from 'react-type-animation'
 import { Link } from 'react-scroll'
-import { FaGithub, FaLinkedin, FaEnvelope, FaCode, FaArrowDown, FaFeatherAlt, FaArrowRight } from 'react-icons/fa'
+import { FaGithub, FaLinkedin, FaEnvelope, FaCode, FaArrowDown, FaFeatherAlt, FaArrowRight, FaTelegramPlane, FaInstagram } from 'react-icons/fa'
 import { personalInfo } from '../../data/portfolioData'
 import { EASE, fadeUp, lineReveal } from '../fx/motion'
 
@@ -41,8 +41,9 @@ function SystemStatusCard({ prefersReducedMotion }) {
             {[
               { k: 'OPERATOR', v: 'Swapnil Patil', accent: 'text-slate-100' },
               { k: 'ROLE', v: 'Backend · AI · DevOps', accent: 'text-signal' },
-              { k: 'AGENT_STACK', v: 'Hermes Agent · LiteLLM', accent: 'text-slate-200' },
-              { k: 'INFRA', v: 'Linux · AWS · Azure DevOps', accent: 'text-slate-300' },
+              { k: 'AGENT_STACK', v: 'Hermes · OpenClaw · LiteLLM · Paperclip', accent: 'text-slate-200' },
+              { k: 'CLOUD', v: 'AWS · Azure · GCP · IONOS', accent: 'text-slate-300' },
+              { k: 'CHANNELS', v: '@TECHNOLOGIA2801 · @technologgia.ai', accent: 'text-slate-300' },
               { k: 'LOCATION', v: 'Pune, India', accent: 'text-slate-300' },
             ].map(({ k, v, accent }) => (
               <div key={k} className="flex items-center justify-between gap-4">
@@ -217,9 +218,9 @@ export default function Hero() {
               custom={0.7}
               className="flex flex-wrap gap-4 mb-12"
             >
-              <Link to="projects" smooth duration={700}>
+              <Link to="ai-creator" smooth duration={700}>
                 <button className="btn-solid focus-ring">
-                  <FaCode size={13} aria-hidden="true" /> View Projects
+                  <FaCode size={13} aria-hidden="true" /> Explore AI Work
                 </button>
               </Link>
               <Link to="contact" smooth duration={700}>
@@ -240,6 +241,8 @@ export default function Hero() {
               {[
                 { href: personalInfo.github, icon: <FaGithub size={18} />, label: 'GitHub' },
                 { href: personalInfo.linkedin, icon: <FaLinkedin size={18} />, label: 'LinkedIn' },
+                { href: personalInfo.telegram.url, icon: <FaTelegramPlane size={17} />, label: 'Telegram — @TECHNOLOGIA2801' },
+                { href: personalInfo.instagram.url, icon: <FaInstagram size={17} />, label: 'Instagram — @technologgia.ai' },
                 { href: `mailto:${personalInfo.email}`, icon: <FaEnvelope size={16} />, label: 'Email' },
               ].map(({ href, icon, label }) => (
                 <a

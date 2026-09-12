@@ -12,12 +12,12 @@ import CursorLight from './components/fx/CursorLight'
 import SignalDivider from './components/fx/SignalDivider'
 
 // Sections — cinematic scroll order:
-// Hero → About → Experience → AI Creator → Projects → Tech Stack/Tools → Achievements → Contact
+// Hero → About → Experience → AI Creator → Creator Signal → Tech Stack/Tools → Achievements → Contact
 import Hero from './components/Hero/Hero'
 import About from './components/About/About'
 import Experience from './components/Experience/Experience'
 import AiCreator from './components/AiCreator/AiCreator'
-import Projects from './components/Projects/Projects'
+import CreatorSignal from './components/CreatorSignal/CreatorSignal'
 import TechStack from './components/TechStack/TechStack'
 import Tools from './components/Tools/Tools'
 import Achievements from './components/Achievements/Achievements'
@@ -58,8 +58,8 @@ export default function App() {
               <Experience />
               <SignalDivider index="03" label="AI Creator" />
               <AiCreator />
-              <SignalDivider index="04" label="Projects" />
-              <Projects />
+              <SignalDivider index="04" label="Creator Signal" />
+              <CreatorSignal />
               <SignalDivider index="05" label="Tech Stack" />
               <TechStack />
               <Tools />

@@ -12,8 +12,53 @@ export const personalInfo = {
   github: 'https://github.com/swapnil2801',
   linkedin: 'https://www.linkedin.com/in/swapnil-patil-s28012001/',
   resume: '/Swapnil_Patil_Resume.pdf',
+  telegram: {
+    handle: '@TECHNOLOGIA2801',
+    url: 'https://t.me/TECHNOLOGIA2801',
+    platform: 'Telegram',
+  },
+  instagram: {
+    handle: '@technologgia.ai',
+    url: 'https://www.instagram.com/technologgia.ai/',
+    platform: 'Instagram',
+  },
   bio: `Backend Engineer & AI enthusiast with 2+ years building production-grade APIs, intelligent agent systems, and cloud-native infrastructure — turning complex challenges into clean, scalable solutions.`,
-  bio2: `From multi-agent AI workflows with Hermes Agent, LiteLLM & Claude Code, to hardening Linux infrastructure and shipping CI/CD pipelines on Azure DevOps. I operate at the intersection of AI, backend, and DevOps.`,
+  bio2: `From multi-agent AI workflows with Hermes Agent, OpenClaw & LiteLLM, to hardening Linux infrastructure and shipping CI/CD pipelines on Azure DevOps. I operate at the intersection of AI, backend, and DevOps.`,
+}
+
+// ============================================================
+// Creator Signal — content & distribution identity
+// ============================================================
+
+export const creatorSignal = {
+  eyebrow: 'Creator Signal',
+  title: 'AI Content & Engineering Creator',
+  subtitle:
+    'Beyond shipping code — documenting the AI engineering journey in public: agent workflows, backend patterns, and cloud infrastructure, explained as they get built.',
+  intro: `I create content about the same systems I engineer. On Telegram and Instagram I share what building with AI actually looks like: multi-agent workflows, LLM tooling, automation experiments, and the backend + DevOps craft underneath them. No hype reels — working setups, real tools, honest trade-offs.`,
+  channels: [
+    {
+      platform: 'Telegram',
+      handle: '@TECHNOLOGIA2801',
+      url: 'https://t.me/TECHNOLOGIA2801',
+      label: 'TECHNOLOGIA on Telegram',
+      description: 'AI engineering notes, agent workflow breakdowns, and tooling drops.',
+      icon: 'telegram',
+    },
+    {
+      platform: 'Instagram',
+      handle: '@technologgia.ai',
+      url: 'https://www.instagram.com/technologgia.ai/',
+      label: 'technologgia.ai on Instagram',
+      description: 'Visual explainers on AI, automation, and the engineering behind them.',
+      icon: 'instagram',
+    },
+  ],
+  pillars: [
+    { title: 'Build in Public', detail: 'Agent workflows and automations shown as they are engineered — real terminals, real diffs.' },
+    { title: 'Explain the Stack', detail: 'Hermes Agent, OpenClaw, LiteLLM, Paperclip and the infra they run on, demystified.' },
+    { title: 'Engineer First', detail: 'Every post is backed by systems I actually run — content follows the code, not the other way around.' },
+  ],
 }
 
 // ============================================================
@@ -60,7 +105,7 @@ export const aiCreator = {
     { step: '04', label: 'Verify', detail: 'Builds must pass; results reported with real output' },
     { step: '05', label: 'Review', detail: 'I review the diff and merge — humans keep the keys' },
   ],
-  stack: ['Hermes Agent', 'Claude / LLM APIs', 'LiteLLM', 'Python', 'Linux', 'Git + SSH', 'Cron Automation', 'FastAPI'],
+  stack: ['Hermes Agent', 'OpenClaw', 'LiteLLM', 'Paperclip', 'Claude / LLM APIs', 'Python', 'Linux', 'Git + SSH', 'Cron Automation', 'FastAPI'],
   disclaimer: null,
 }
 
@@ -93,7 +138,10 @@ export const skills = [
     color: 'purple',
     items: [
       { name: 'AWS', level: 82 },
+      { name: 'Azure', level: 80 },
       { name: 'Azure DevOps', level: 86 },
+      { name: 'GCP', level: 78 },
+      { name: 'IONOS', level: 75 },
       { name: 'Docker / Kubernetes', level: 80 },
       { name: 'CI/CD Pipelines', level: 85 },
     ],
@@ -113,9 +161,14 @@ export const skills = [
 
 export const tools = [
   { name: 'Hermes Agent', icon: 'hermes', category: 'AI Agent' },
-  { name: 'Azure DevOps', icon: 'azure', category: 'DevOps' },
+  { name: 'OpenClaw', icon: 'openclaw', category: 'AI Agent' },
+  { name: 'LiteLLM', icon: 'litellm', category: 'LLM Proxy' },
+  { name: 'Paperclip', icon: 'paperclip', category: 'AI Agent' },
+  { name: 'Azure', icon: 'azure', category: 'Cloud' },
+  { name: 'Azure DevOps', icon: 'azuredevops', category: 'DevOps' },
   { name: 'AWS', icon: 'aws', category: 'Cloud' },
   { name: 'GCP', icon: 'gcp', category: 'Cloud' },
+  { name: 'IONOS', icon: 'ionos', category: 'Cloud' },
   { name: 'Docker', icon: 'docker', category: 'DevOps' },
   { name: 'Git', icon: 'git', category: 'Version Control' },
   { name: 'GitHub', icon: 'github', category: 'Version Control' },
@@ -149,6 +202,10 @@ export const experience = [
   },
 ]
 
+// NOTE: Retained factual project data (real repositories). The Projects
+// section is intentionally NOT rendered anywhere in the app — this export
+// is unused by the UI and kept only as a factual record; bundlers
+// tree-shake it out of the build.
 export const projects = [
   {
     id: 1,

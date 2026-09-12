@@ -114,9 +114,9 @@ export default function TechStack() {
                 aria-hidden={dup === 1 ? 'true' : undefined}
               >
                 {[
-                  'Python for AI', 'LiteLLM', 'AI Agents', 'Hermes Agent', 'LangChain', 'FastAPI',
+                  'Python for AI', 'Hermes Agent', 'OpenClaw', 'LiteLLM', 'Paperclip', 'AI Agents', 'LangChain', 'FastAPI',
                   'React', 'Angular', '.NET Core', 'C#',
-                  'AWS', 'Azure DevOps', 'GCP', 'Docker', 'Kubernetes',
+                  'AWS', 'Azure', 'Azure DevOps', 'GCP', 'IONOS', 'Docker', 'Kubernetes',
                   'Linux Infrastructure', 'SQL Server', 'PostgreSQL', 'REST APIs', 'CI/CD',
                 ].map((tag) => (
                   <span key={tag} className="flex items-center gap-3 flex-shrink-0">
