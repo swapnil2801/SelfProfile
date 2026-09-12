@@ -4,10 +4,10 @@ import { skills } from '../../data/portfolioData'
 import SectionTitle from '../common/SectionTitle'
 
 const barAccents = {
-  pink: 'from-neon-magenta to-neon-violet',
-  blue: 'from-neon-cyan to-neon-blue',
-  purple: 'from-neon-violet to-neon-magenta',
-  cyan: 'from-neon-cyan to-neon-violet',
+  pink: 'from-signal to-signal-soft',
+  blue: 'from-slate-50/80 to-signal',
+  purple: 'from-slate-50/70 to-slate-300',
+  cyan: 'from-signal-faint to-signal',
 }
 
 function SkillBar({ name, level, index, accent }) {
@@ -26,7 +26,7 @@ function SkillBar({ name, level, index, accent }) {
         <span className="text-sm text-slate-400 group-hover:text-slate-100 transition-colors duration-200">
           {name}
         </span>
-        <span className="text-xs font-mono text-neon-cyan/60">{level}%</span>
+        <span className="text-xs font-mono text-signal/70">{level}%</span>
       </div>
       <div className="h-1 bg-slate-500/15 rounded-full overflow-hidden">
         <motion.div
@@ -96,24 +96,37 @@ export default function TechStack() {
           ))}
         </div>
 
-        {/* Bottom highlight tags */}
+        {/* Bottom marquee band — technologies drift past like a ticker.
+            Reduced motion: CSS pauses the track (static row). */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.3, duration: 0.5 }}
-          className="mt-12 flex flex-wrap justify-center gap-3"
+          transition={{ delay: 0.3, duration: 0.7 }}
+          className="mt-14 border-y border-slate-50/10 py-4"
+          aria-label="Technology ticker"
         >
-          {[
-            'Python for AI', 'LiteLLM', 'AI Agents', 'Hermes Agent', 'LangChain', 'FastAPI',
-            'React', 'Angular', '.NET Core', 'C#',
-            'AWS', 'Azure DevOps', 'GCP', 'Docker', 'Kubernetes',
-            'Linux Infrastructure', 'SQL Server', 'PostgreSQL', 'REST APIs', 'CI/CD',
-          ].map((tag) => (
-            <span key={tag} className="chip font-mono cursor-default">
-              {tag}
-            </span>
-          ))}
+          <div className="marquee">
+            {[0, 1].map((dup) => (
+              <div
+                key={dup}
+                className="marquee-track"
+                aria-hidden={dup === 1 ? 'true' : undefined}
+              >
+                {[
+                  'Python for AI', 'LiteLLM', 'AI Agents', 'Hermes Agent', 'LangChain', 'FastAPI',
+                  'React', 'Angular', '.NET Core', 'C#',
+                  'AWS', 'Azure DevOps', 'GCP', 'Docker', 'Kubernetes',
+                  'Linux Infrastructure', 'SQL Server', 'PostgreSQL', 'REST APIs', 'CI/CD',
+                ].map((tag) => (
+                  <span key={tag} className="flex items-center gap-3 flex-shrink-0">
+                    <span className="font-mono text-xs text-slate-400 whitespace-nowrap uppercase tracking-widest">{tag}</span>
+                    <span className="w-1 h-1 rounded-full bg-signal/70" aria-hidden="true" />
+                  </span>
+                ))}
+              </div>
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>

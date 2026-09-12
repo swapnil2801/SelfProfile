@@ -3,6 +3,7 @@ import { motion, useInView } from 'framer-motion'
 import { FaEnvelope, FaLinkedin, FaGithub, FaMapMarkerAlt, FaPaperPlane } from 'react-icons/fa'
 import { personalInfo } from '../../data/portfolioData'
 import SectionTitle from '../common/SectionTitle'
+import { EASE } from '../fx/motion'
 
 const contactLinks = [
   {
@@ -89,6 +90,53 @@ export default function Contact() {
           title="Contact Me"
           subtitle="Have a project in mind or want to collaborate? I'd love to hear from you."
         />
+
+        {/* Cinematic CTA statement — oversized editorial type with signal accents */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-80px' }}
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.14 } } }}
+          className="mt-14 mb-16 text-center"
+        >
+          <span className="line-mask">
+            <motion.span
+              variants={{ hidden: { y: '110%' }, visible: { y: '0%', transition: { duration: 0.9, ease: EASE } } }}
+              className="font-display font-bold text-4xl md:text-6xl lg:text-7xl tracking-tight leading-[1.02] text-slate-50"
+            >
+              Let&apos;s put a<span className="text-signal"> signal</span>
+            </motion.span>
+          </span>
+          <span className="line-mask">
+            <motion.span
+              variants={{ hidden: { y: '110%' }, visible: { y: '0%', transition: { duration: 0.9, ease: EASE } } }}
+              className="font-display font-bold text-4xl md:text-6xl lg:text-7xl tracking-tight leading-[1.02] text-outline"
+            >
+              through the noise.
+            </motion.span>
+          </span>
+          <motion.div
+            variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE } } }}
+            className="mt-10 flex flex-wrap items-center justify-center gap-4"
+          >
+            <a href={`mailto:${personalInfo.email}`} className="btn-solid focus-ring">
+              <FaEnvelope size={13} aria-hidden="true" /> Email Me
+            </a>
+            <a
+              href={personalInfo.resume}
+              download="Swapnil_Patil_Resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="btn-outline focus-ring"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                  d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              Download Resume
+            </a>
+          </motion.div>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 24 }}

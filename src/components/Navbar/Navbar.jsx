@@ -6,10 +6,10 @@ import { personalInfo } from '../../data/portfolioData'
 const navLinks = [
   { label: 'Home', to: 'hero' },
   { label: 'About', to: 'about' },
-  { label: 'AI Creator', to: 'ai-creator' },
-  { label: 'Skills', to: 'skills' },
   { label: 'Experience', to: 'experience' },
+  { label: 'AI Creator', to: 'ai-creator' },
   { label: 'Projects', to: 'projects' },
+  { label: 'Skills', to: 'skills' },
   { label: 'Contact', to: 'contact' },
 ]
 
