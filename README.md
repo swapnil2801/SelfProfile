@@ -21,4 +21,3 @@ Vercel env vars and a deployed endpoint — nothing is sent locally.
 
 Drop the final resume at `public/Swapnil_Patil_Resume.pdf`. Until it exists,
 `npm run check` reports it as pending (expected missing), not a failure.
-
