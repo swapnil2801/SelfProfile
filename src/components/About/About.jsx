@@ -3,6 +3,8 @@ import { motion, useInView } from 'framer-motion'
 import { FaMapMarkerAlt, FaBriefcase, FaRocket, FaCheckCircle } from 'react-icons/fa'
 import { personalInfo } from '../../data/portfolioData'
 import SectionTitle from '../common/SectionTitle'
+import CountUp from '../fx/CountUp'
+import { EASE } from '../fx/motion'
 
 const stats = [
   { value: '2+', label: 'Years Exp.', icon: <FaBriefcase size={14} /> },
@@ -28,8 +30,8 @@ export default function About() {
   const inView = useInView(ref, { once: true, margin: '-100px' })
 
   const card = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+    hidden: { opacity: 0, y: 24 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE } },
   }
 
   return (
@@ -107,10 +109,12 @@ export default function About() {
                   key={i}
                   className="glass p-5 text-center cursor-default"
                 >
-                  <div className="w-8 h-8 rounded-md border border-slate-500/25 flex items-center justify-center mx-auto mb-3 text-neon-cyan">
+                  <div className="w-8 h-8 rounded-sm border border-slate-50/15 flex items-center justify-center mx-auto mb-3 text-signal">
                     {stat.icon}
                   </div>
-                  <div className="text-2xl font-display font-semibold text-gradient">{stat.value}</div>
+                  <div className="text-2xl font-display font-semibold text-slate-50">
+                    <CountUp value={stat.value} />
+                  </div>
                   <div className="text-xs text-slate-500 mt-1">{stat.label}</div>
                 </div>
               ))}
@@ -119,9 +123,9 @@ export default function About() {
             {/* Compact terminal */}
             <motion.div variants={card} className="terminal-frame hud-corners">
               <div className="terminal-header">
-                <span className="terminal-dot bg-rose-500/70" />
-                <span className="terminal-dot bg-amber-400/70" />
-                <span className="terminal-dot bg-emerald-400/70" />
+                <span className="terminal-dot bg-slate-500/60" />
+                <span className="terminal-dot bg-slate-400/50" />
+                <span className="terminal-dot bg-signal/70" />
                 <span className="ml-2 text-xs font-mono text-slate-400">swapnil.config.py</span>
               </div>
               <pre className="p-4 text-xs font-mono leading-6 overflow-x-auto text-slate-300">

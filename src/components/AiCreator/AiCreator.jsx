@@ -76,9 +76,9 @@ export default function AiCreator() {
             {/* Terminal-style illustration of the workflow */}
             <motion.div variants={card} className="terminal-frame hud-corners self-center w-full">
               <div className="terminal-header">
-                <span className="terminal-dot bg-rose-500/70" />
-                <span className="terminal-dot bg-amber-400/70" />
-                <span className="terminal-dot bg-emerald-400/70" />
+                <span className="terminal-dot bg-slate-500/60" />
+                <span className="terminal-dot bg-slate-400/50" />
+                <span className="terminal-dot bg-signal/70" />
                 <span className="ml-2 text-xs font-mono text-slate-400">hermes — agent session</span>
                 <span className="ml-auto flex items-center gap-1.5 text-[0.6rem] font-mono text-neon-green/80 uppercase tracking-wider">
                   <span className="led" aria-hidden="true" /> live
