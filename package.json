@@ -7,11 +7,10 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "check": "node scripts/check-structure.mjs"
+    "check": "node scripts/check-structure.mjs && node scripts/check-contact-api.mjs"
   },
   "dependencies": {
     "framer-motion": "^11.0.0",
-    "pg": "^8.20.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.0",

@@ -35,7 +35,8 @@ const contactLinks = [
 export default function Contact() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
-  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
+  // `company` is a honeypot field — hidden from humans, filled only by bots.
+  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '', company: '' })
   const [sending, setSending] = useState(false)
   const [sent, setSent] = useState(false)
   const [error, setError] = useState('')
@@ -56,17 +57,28 @@ export default function Contact() {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: form.name, email: form.email, subject: form.subject, message: form.message }),
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          subject: form.subject,
+          message: form.message,
+          company: form.company,
+        }),
       })
-      const data = await res.json()
+      let data = {}
+      try {
+        data = await res.json()
+      } catch {
+        data = {}
+      }
       if (res.ok && data.success) {
         setSent(true)
-        setForm({ name: '', email: '', subject: '', message: '' })
+        setForm({ name: '', email: '', subject: '', message: '', company: '' })
       } else {
-        setError(data.error || 'Something went wrong. Please email me directly.')
+        setError(data.error || `Something went wrong. Please email me directly at ${personalInfo.email}.`)
       }
     } catch {
-      setError('Network error. Please email me directly.')
+      setError(`Network error — your message was not sent. Please email me directly at ${personalInfo.email}.`)
     } finally {
       setSending(false)
     }
@@ -230,7 +242,8 @@ export default function Contact() {
                 <div className="text-5xl emoji-mono">🚀</div>
                 <h3 className="font-display font-semibold text-xl text-slate-100">Message Sent!</h3>
                 <p className="text-slate-400 text-sm max-w-xs">
-                  Thanks for reaching out. I&apos;ll get back to you within 24 hours.
+                  Thanks for reaching out — your message was delivered to my inbox.
+                  I&apos;ll get back to you as soon as I can.
                 </p>
                 <button
                   onClick={() => setSent(false)}
@@ -245,6 +258,22 @@ export default function Contact() {
                   <span className="text-neon-cyan font-mono mr-2">&gt;_</span>
                   Send a Message
                 </h3>
+
+                {/* Honeypot — visually hidden and excluded from the tab order.
+                    Humans never fill it; the API rejects submissions where it
+                    is non-empty. */}
+                <div className="sr-only" aria-hidden="true">
+                  <label htmlFor="contact-company">Company (leave blank)</label>
+                  <input
+                    id="contact-company"
+                    type="text"
+                    name="company"
+                    value={form.company}
+                    onChange={handleChange}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
 
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
